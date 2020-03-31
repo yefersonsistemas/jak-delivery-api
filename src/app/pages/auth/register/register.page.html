@@ -6,9 +6,9 @@
 
 <ion-content>
   <form (ngSubmit)="register(fRegister)" #fRegister="ngForm">
-    <input type="hidden" name="persona" value="persona" >
     <ion-grid fixed>
       <ion-row>
+        <ion-input type="hidden" name="role" value="client" [(ngModel)]="registerUser.role"></ion-input>
         <ion-col size="6"> <!-- input del nombre (cliente, courier o proveedor)-->
           <ion-item>
             <ion-label position="floating">Nombre</ion-label>
@@ -54,32 +54,31 @@
           </ion-item>
         </ion-col>
 
-        <ion-col size="6"> <!-- input del Estado para la direccion (cliente, courier o proveedor)-->
+        <ion-col size="6" *ngFor="let address of address.estado"> <!-- input del Estado para la direccion (cliente, courier o proveedor)-->
           <ion-item>
             <ion-label position="floating">Estado</ion-label>
-            <ion-select name="state" required [(ngModel)]="registerUser.state" okText="Aceptar" cancelText="Cancelar">
-              <ion-select-option value="Lara" >Lara</ion-select-option>
+            <ion-select name="states_id" required [(ngModel)]="registerUser.states_id" okText="Aceptar" cancelText="Cancelar">
+              <ion-select-option value="{{address.id}}">{{address.name}}</ion-select-option>
 
             </ion-select>
           </ion-item>
         </ion-col>
 
-        <ion-col size="6"> <!-- input de la Ciduad para la direccion (cliente, courier o proveedor)-->
+        <ion-col size="6" *ngFor="let address of address.ciudad"> <!-- input de la Ciduad para la direccion (cliente, courier o proveedor)-->
           <ion-item>
             <ion-label position="floating">Ciudad</ion-label>
-            <ion-select name="city" required [(ngModel)]="registerUser.city" okText="Aceptar" cancelText="Cancelar">
-              <ion-select-option value="Barquisimeto" >Barquisimeto</ion-select-option>
+            <ion-select name="cities_id" required [(ngModel)]="registerUser.cities_id" okText="Aceptar" cancelText="Cancelar">
+              <ion-select-option value="{{address.id}}" >{{address.name}}</ion-select-option>
 
             </ion-select>
           </ion-item>
         </ion-col>
 
-        <ion-col size="6"> <!-- input del Municipio para la direccion (cliente, courier o proveedor)-->
+        <ion-col size="6" > <!-- input del Municipio para la direccion (cliente, courier o proveedor)-->
           <ion-item>
             <ion-label position="floating">Municipio</ion-label>
-            <ion-select name="municipality" required [(ngModel)]="registerUser.municipality" okText="Aceptar" cancelText="Cancelar">
-              <ion-select-option value="Irribarren">Irribarren</ion-select-option>
-
+            <ion-select name="municipalities_id" required [(ngModel)]="registerUser.municipalities_id" okText="Aceptar" cancelText="Cancelar">
+              <ion-select-option *ngFor="let address of address.municipio" value="{{address.id}}">{{address.name}}</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-col>
@@ -87,8 +86,8 @@
         <ion-col size="6"> <!-- input de la parroquia para la direccion (cliente, courier o proveedor)-->
           <ion-item>
             <ion-label position="floating">Parroquia</ion-label>
-            <ion-select  name="parishe" required [(ngModel)]="registerUser.parishe" okText="Aceptar" cancelText="Cancelar">
-              <ion-select-option value="Catedral" >Catedral</ion-select-option>
+            <ion-select  name="parishes_id" required [(ngModel)]="registerUser.parishes_id" okText="Aceptar" cancelText="Cancelar">
+              <ion-select-option *ngFor="let address of address.parroquia" value="{{address.id}}">{{address.name}}</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-col>
@@ -97,6 +96,13 @@
           <ion-item>
             <ion-label position="floating">Direccion de domicilio</ion-label>
             <ion-input type="text" name="address" required [(ngModel)]="registerUser.address"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="12"> <!-- input del tipo de documento (cliente, courier o proveedor)-->
+          <ion-item>
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input type="password" [(ngModel)]="registerUser.password" name="password" required></ion-input>
           </ion-item>
         </ion-col>
 

@@ -21,14 +21,14 @@ export class AuthService {
       .subscribe(resp => {
         console.log(resp);
 
-        if ( resp['ok: true'] ) {
-          this.saveToken(resp['token']);
-          resolve(true);
-        } else {
-          this.token = null;
-          this.storage.clear();
-          resolve(false)
-        }
+        // if ( resp['ok: true'] ) {
+        //   this.saveToken(resp['token']);
+        //   resolve(true);
+        // } else {
+        //   this.token = null;
+        //   this.storage.clear();
+        //   resolve(false);
+        // }
       });
     });
   }

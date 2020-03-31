@@ -5,10 +5,10 @@ export interface Usuario {
     phone?: string;
     type_dni?: string;
     dni?: string;
-    state?: string;
-    city?: string;
-    municipality?: string;
-    parishe?: string;
+    states_id?: string;
+    cities_id?: string;
+    municipalities_id?: string;
+    parishes_id?: string;
     address?: string;
     password?: string;
     role?: string;

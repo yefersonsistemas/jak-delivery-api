@@ -4,6 +4,7 @@ import { AlertserviceService } from '../../../services/alertservice.service';
 import { NgForm } from '@angular/forms';
 import { Usuario } from 'src/app/models/interface';
 import { NavController } from '@ionic/angular';
+import { GetmethodsService } from 'src/app/services/getmethods.service';
 
 @Component({
   selector: 'app-register',
@@ -12,6 +13,8 @@ import { NavController } from '@ionic/angular';
 })
 export class RegisterPage implements OnInit {
 
+  address: any[] = [];
+
   registerUser: Usuario = {
     name: '',
     lastname: '',
@@ -19,17 +22,23 @@ export class RegisterPage implements OnInit {
     phone: '',
     type_dni: '',
     dni: '',
-    state: '',
-    city: '',
-    municipality: '',
-    parishe: '',
+    states_id: '',
+    cities_id: '',
+    municipalities_id: '',
+    parishes_id: '',
     address: '',
-    role: '',
+    role: 'client',
+    password: '',
   };
 
-  constructor(private auth: AuthService, private alert: AlertserviceService, private NavCtrl: NavController) { }
+  constructor(private auth: AuthService, private alert: AlertserviceService, private NavCtrl: NavController,
+              private getmethods: GetmethodsService) { }
 
   ngOnInit() {
+    this.getmethods.getInfoAddress().subscribe((resp: any ) => {
+      this.address = resp;
+      console.log('toda la geografia', this.address);
+    });
   }
 
   async register(fRegister: NgForm) {
@@ -40,13 +49,13 @@ export class RegisterPage implements OnInit {
 
     console.log(this.registerUser);
 
-  //   const valid = await this.auth.register(this.registerUser);
+    const valid = await this.auth.register(this.registerUser);
 
-  //   if ( valid ) {
-  //     this.NavCtrl.navigateRoot(['/main/tabs/tab1'], { animated: true} );
-  //   } else {
-  //     this.alert.infoAlert('El correo ya esta registrado');
-  //   }
+    if ( valid ) {
+      this.NavCtrl.navigateRoot(['/main/tabs/tab1'], { animated: true} );
+    } else {
+      this.alert.infoAlert('El correo ya esta registrado');
+    }
   }
 
 }
