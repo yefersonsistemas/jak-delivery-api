@@ -10,6 +10,8 @@ const Url = 'http://192.168.0.87/proyecto-a-api/public/api/';
 export class AuthService {
 
   token: string =  null;
+  id: string = null;
+
 
   constructor(private http: HttpClient, private storage: Storage) { }
 
@@ -21,7 +23,7 @@ export class AuthService {
       .subscribe(resp => {
         console.log(resp);
 
-        // if ( resp['ok: true'] ) {
+        // if ( resp['ok'] ) {
         //   this.saveToken(resp['token']);
         //   resolve(true);
         // } else {
@@ -33,33 +35,29 @@ export class AuthService {
     });
   }
 
-  login(email: string, password: string) {
+  login(email: string, password: string, role: string) {
 
-    const data = { name, password};
-
-    return new Promise( resolve => {
+    const data = { email, password, role};
 
     this.http.post( Url + 'auth/login', data)
     .subscribe( resp => {
       console.log(resp);
 
-      if (resp['ok: true']) {
-        this.saveToken(resp['token']);
-        resolve(true);
-      } else {
-        this.token = null;
-        this.storage.clear();
-        resolve(false);
-      }
-        });
-    });
+      this.saveToken(resp['access_token']);
+      this.saveData(resp['id'], resp['role'], resp['name']);
+
+      return resp;
+      });
   }
 
 
-  async saveToken( token: string ) {
-    this.token = token;
-    await this.storage.set( 'token', token );
+  async saveToken( access_token: string ) {
+    this.token = access_token;
+    await this.storage.set( 'token', access_token );
   }
 
+  async saveData( id: string, role: string, name: string ) {
+    await this.storage.set('id', id), this.storage.set('role', role), this.storage.set('name', name);
+  }
 
 }

@@ -14,6 +14,7 @@ import { GetmethodsService } from 'src/app/services/getmethods.service';
 export class RegisterPage implements OnInit {
 
   address: any[] = [];
+  role: any[] = [];
 
   registerUser: Usuario = {
     name: '',
@@ -35,13 +36,21 @@ export class RegisterPage implements OnInit {
               private getmethods: GetmethodsService) { }
 
   ngOnInit() {
+    // codigo para traer los estados, ciudades, municipios y parroquias
     this.getmethods.getInfoAddress().subscribe((resp: any ) => {
       this.address = resp;
       console.log('toda la geografia', this.address);
     });
+
+    // this.getmethods.getRoles().subscribe((resp: any) => {
+    //   this.role = resp;
+    //   console.log('roles', this.role);
+    // });
   }
 
   async register(fRegister: NgForm) {
+
+    console.log(fRegister.value.role);
 
     if (fRegister.invalid) {this.alert.infoAlert('Verifique los campos requeridos'); }
 

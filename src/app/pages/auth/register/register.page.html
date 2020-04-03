@@ -8,7 +8,6 @@
   <form (ngSubmit)="register(fRegister)" #fRegister="ngForm">
     <ion-grid fixed>
       <ion-row>
-        <ion-input type="hidden" name="role" value="client" [(ngModel)]="registerUser.role"></ion-input>
         <ion-col size="6"> <!-- input del nombre (cliente, courier o proveedor)-->
           <ion-item>
             <ion-label position="floating">Nombre</ion-label>
@@ -16,7 +15,7 @@
           </ion-item>
         </ion-col>
 
-        <ion-col size="6"> <!-- input del nombre (cliente o courier)-->
+        <ion-col size="6"> <!-- input del apellido (cliente o courier)-->
           <ion-item>
             <ion-label position="floating">Apellido</ion-label>
             <ion-input type="text" name="lastname" required [(ngModel)]="registerUser.lastname"></ion-input>

@@ -14,8 +14,8 @@ export class LoginPage implements OnInit {
   loginUser = {
 
     email: '',
-    password: ''
-
+    password: '',
+    role: 'client',
   };
 
   constructor(private auth: AuthService, private alert: AlertserviceService, private NavCtrl: NavController) { }
@@ -26,18 +26,15 @@ export class LoginPage implements OnInit {
   async login(fLogin: NgForm) {
 
     if (fLogin.invalid) { this.alert.infoAlert('Ingrese el Email y/o Password'); }
-
     console.log(fLogin.valid);
-
     console.log(this.loginUser);
 
-    // const valid = await this.auth.login(this.loginUser.email, this.loginUser.password);
-
+    this.auth.login(this.loginUser.email, this.loginUser.password, this.loginUser.role);
+    this.NavCtrl.navigateRoot(['/main/tabs/tab1', { animated : true } ]);
 
     // if (valid) {
-    //   this.NavCtrl.navigateRoot(['/main/tabs/tab1', { animated : true } ]);
     // } else {
-    //   this.alert.infoAlert('Usuario y/o Password es Incorrecto');
+      // this.alert.infoAlert('Usuario y/o Password es Incorrecto');
     // }
   }
 
