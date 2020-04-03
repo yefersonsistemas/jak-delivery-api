@@ -23,19 +23,15 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  async login(fLogin: NgForm) {
+  login(fLogin: NgForm) {
 
     if (fLogin.invalid) { this.alert.infoAlert('Ingrese el Email y/o Password'); }
     console.log(fLogin.valid);
     console.log(this.loginUser);
 
-    this.auth.login(this.loginUser.email, this.loginUser.password, this.loginUser.role);
+    this.auth.login(this.loginUser.email, this.loginUser.password, this.loginUser.role).subscribe( resp =>)
     this.NavCtrl.navigateRoot(['/main/tabs/tab1', { animated : true } ]);
 
-    // if (valid) {
-    // } else {
-      // this.alert.infoAlert('Usuario y/o Password es Incorrecto');
-    // }
   }
 
 }
