@@ -42,7 +42,12 @@ export class AuthService {
 
     this.http.post( Url + 'auth/login', data)
     .pipe(map(resp => {
+      console.log(resp);
 
+        this.saveToken(resp['access_token']);
+        this.saveData(resp['id'], resp['role'], resp['name']);
+  
+        return resp;
     }));
     // .subscribe( resp => {
     //   console.log(resp);
