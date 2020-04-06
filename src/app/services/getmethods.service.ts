@@ -12,8 +12,4 @@ export class GetmethodsService {
   getInfoAddress() {
     return this.http.get( Url + 'auth/address');
   }
-
-  // getRoles() {
-  //   return this.http.get( Url + 'auth//role');
-  // }
 }

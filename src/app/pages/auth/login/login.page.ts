@@ -3,6 +3,8 @@ import { AuthService } from '../../../services/auth.service';
 import { NgForm } from '@angular/forms';
 import { AlertserviceService } from '../../../services/alertservice.service';
 import { NavController } from '@ionic/angular';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-login',
@@ -12,10 +14,8 @@ import { NavController } from '@ionic/angular';
 export class LoginPage implements OnInit {
 
   loginUser = {
-
     email: '',
     password: '',
-    role: 'client',
   };
 
   constructor(private auth: AuthService, private alert: AlertserviceService, private NavCtrl: NavController) { }
@@ -25,12 +25,43 @@ export class LoginPage implements OnInit {
 
   login(fLogin: NgForm) {
 
-    if (fLogin.invalid) { this.alert.infoAlert('Ingrese el Email y/o Password'); }
+    // fomulario invalido
+    if (fLogin.invalid) {
+      // mensaje de formulario invalido
+      Swal.fire({
+        icon: 'error',
+        title: 'Ingrese el Email y/o Password',
+        timer: 1500,
+        showConfirmButton: false,
+      });
+
+    }
+
     console.log(fLogin.valid);
     console.log(this.loginUser);
 
-    this.auth.login(this.loginUser.email, this.loginUser.password, this.loginUser.role).subscribe( resp =>)
-    this.NavCtrl.navigateRoot(['/main/tabs/tab1', { animated : true } ]);
+    // comunicacion con el servio de auth para el login
+    this.auth.login(this.loginUser.email, this.loginUser.password).subscribe( resp => {
+      this.NavCtrl.navigateRoot(['/home-client' ], { animated : true });
+    }, (error) => {
+      console.log('este es el error', error.error);
+      if (error.error.person) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Usuario No registrado',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+      if (error.error.message) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Contraseña Incorrecta',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
 
   }
 
