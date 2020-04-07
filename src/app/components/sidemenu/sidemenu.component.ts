@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { NavController } from '@ionic/angular';
 import Swal from 'sweetalert2';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-sidemenu',
@@ -10,6 +11,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./sidemenu.component.scss'],
 })
 export class SidemenuComponent implements OnInit {
+
+  userRole: string;
 
   menuOpts =  [
     {
@@ -20,9 +23,15 @@ export class SidemenuComponent implements OnInit {
 
 ];
 
-  constructor(private auth: AuthService, private navCtrl: NavController) { }
+  constructor(private auth: AuthService, private navCtrl: NavController, private storage: Storage) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+  this.storage.get('role').then((val) => {
+    this.userRole = val;
+    console.log('role/s del usurio', this.userRole);
+  });
+
+  }
 
   logout() {
     this.auth.logout();

@@ -17,6 +17,11 @@ const routes: Routes = [
     path: 'home-client',
     loadChildren: () => import('./pages/client/home-client/home-client.module').then( m => m.HomeClientPageModule),
     // canActivate: [UsersGuard]
+  },
+  {
+    path: 'profile-client',
+    loadChildren: () => import('./pages/client/profile-client/profile-client.module').then( m => m.ProfileClientPageModule),
+    // canActivate: [UsersGuard]
   }
 ];
 @NgModule({

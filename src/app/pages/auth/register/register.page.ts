@@ -14,6 +14,8 @@ import Swal from 'sweetalert2';
 })
 export class RegisterPage implements OnInit {
 
+  emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
+
   address: any[] = [];
   role: any[] = [];
 
