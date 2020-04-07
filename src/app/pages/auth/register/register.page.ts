@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { Usuario } from 'src/app/models/interface';
 import { NavController } from '@ionic/angular';
 import { GetmethodsService } from 'src/app/services/getmethods.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -14,6 +15,7 @@ import { GetmethodsService } from 'src/app/services/getmethods.service';
 export class RegisterPage implements OnInit {
 
   address: any[] = [];
+  role: any[] = [];
 
   registerUser: Usuario = {
     name: '',
@@ -27,7 +29,6 @@ export class RegisterPage implements OnInit {
     municipalities_id: '',
     parishes_id: '',
     address: '',
-    role: 'client',
     password: '',
   };
 
@@ -35,27 +36,48 @@ export class RegisterPage implements OnInit {
               private getmethods: GetmethodsService) { }
 
   ngOnInit() {
+    // codigo para traer los estados, ciudades, municipios y parroquias
     this.getmethods.getInfoAddress().subscribe((resp: any ) => {
       this.address = resp;
       console.log('toda la geografia', this.address);
     });
   }
 
-  async register(fRegister: NgForm) {
+  register(fRegister: NgForm) {
 
-    if (fRegister.invalid) {this.alert.infoAlert('Verifique los campos requeridos'); }
+    // Validacion de Registro Invalido Con su mensaje de error
+    if (fRegister.invalid) {
 
-    console.log(fRegister.valid);
-
-    console.log(this.registerUser);
-
-    const valid = await this.auth.register(this.registerUser);
-
-    if ( valid ) {
-      this.NavCtrl.navigateRoot(['/main/tabs/tab1'], { animated: true} );
-    } else {
-      this.alert.infoAlert('El correo ya esta registrado');
+      Swal.fire({
+        icon: 'error',
+        title: 'Verifique los campos requeridos',
+        timer: 1500,
+        showConfirmButton: false,
+      });
+      // this.alert.infoAlert('Verifique los campos requeridos');
     }
+    // Envio del formulario al servicio
+    this.auth.register(this.registerUser).subscribe( resp => {
+      console.log('resp desde ts', resp);
+      // Condicion si el Correo ya esta registrado en la DB //****Nota: message no es un error.
+      if (resp.message === 'Usuario ya se encuentra registrado!') {
+        Swal.fire({
+          icon: 'error',
+          title: 'El email ya se encuentra registrado',
+          timer: 1500,
+          showConfirmButton: false,
+        });
+      } else if (resp.message === 'Usuario creado correctamente.!' ) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Usuario creado, Bienvenido',
+          timer: 1500,
+          showConfirmButton: false,
+        });
+        this.NavCtrl.navigateRoot(['/home-client'], { animated: true} );
+      }
+    });
+
   }
 
 }

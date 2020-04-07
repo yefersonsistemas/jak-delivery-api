@@ -12,6 +12,4 @@ export class GetmethodsService {
   getInfoAddress() {
     return this.http.get( Url + 'auth/address');
   }
-
-
 }
