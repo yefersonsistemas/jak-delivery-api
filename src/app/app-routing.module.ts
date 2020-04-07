@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { UsersGuard } from './guards/users.guard';
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
   },
   {
     path: 'home-client',
-    loadChildren: () => import('./pages/client/home-client/home-client.module').then( m => m.HomeClientPageModule)
+    loadChildren: () => import('./pages/client/home-client/home-client.module').then( m => m.HomeClientPageModule),
+    // canActivate: [UsersGuard]
   }
 ];
 @NgModule({

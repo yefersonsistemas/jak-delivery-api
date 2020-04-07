@@ -42,6 +42,7 @@ export class LoginPage implements OnInit {
 
     // comunicacion con el servio de auth para el login
     this.auth.login(this.loginUser.email, this.loginUser.password).subscribe( resp => {
+      console.log(resp);
       this.NavCtrl.navigateRoot(['/home-client' ], { animated : true });
     }, (error) => {
       console.log('este es el error', error.error);
