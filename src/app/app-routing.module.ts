@@ -14,7 +14,19 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./pages/auth/register/register.module').then( m => m.RegisterPageModule)
-  }
+  },
+  {
+    path: 'product-create',
+    loadChildren: () => import('./pages/provider/product-create/product-create.module').then( m => m.ProductCreatePageModule)
+  },
+  {
+    path: 'product-edit',
+    loadChildren: () => import('./pages/provider/product-edit/product-edit.module').then( m => m.ProductEditPageModule)
+  },  {
+    path: 'product-list',
+    loadChildren: () => import('./pages/provider/product-list/product-list.module').then( m => m.ProductListPageModule)
+  },
+
 ];
 @NgModule({
   imports: [

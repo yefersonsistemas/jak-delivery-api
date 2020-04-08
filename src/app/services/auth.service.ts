@@ -33,24 +33,24 @@ export class AuthService {
     });
   }
 
-  login(email: string, password: string) {
+  login(email: string, password: string, role: string) {
 
-    const data = { name, password};
-
+    const data = { email, password, role};
+    console.log('data servicio login', data);
     return new Promise( resolve => {
 
     this.http.post( Url + 'auth/login', data)
     .subscribe( resp => {
-      console.log(resp);
+      console.log('login', resp);
 
-      if (resp['ok: true']) {
-        this.saveToken(resp['token']);
-        resolve(true);
-      } else {
-        this.token = null;
-        this.storage.clear();
-        resolve(false);
-      }
+      // if (resp['ok: true']) {
+      //   this.saveToken(resp['token']);
+      //   resolve(true);
+      // } else {
+      //   this.token = null;
+      //   this.storage.clear();
+      //   resolve(false);
+      // }
         });
     });
   }

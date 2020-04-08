@@ -14,7 +14,8 @@ export class LoginPage implements OnInit {
   loginUser = {
 
     email: '',
-    password: ''
+    password: '',
+    role: 'client'
 
   };
 
@@ -31,14 +32,14 @@ export class LoginPage implements OnInit {
 
     console.log(this.loginUser);
 
-    // const valid = await this.auth.login(this.loginUser.email, this.loginUser.password);
+    const valid = await this.auth.login(this.loginUser.email, this.loginUser.password, this.loginUser.role);
 
 
-    // if (valid) {
-    //   this.NavCtrl.navigateRoot(['/main/tabs/tab1', { animated : true } ]);
-    // } else {
-    //   this.alert.infoAlert('Usuario y/o Password es Incorrecto');
-    // }
+    if (valid) {
+      this.NavCtrl.navigateRoot(['/main/tabs/tab1', { animated : true } ]);
+    } else {
+      this.alert.infoAlert('Usuario y/o Password es Incorrecto');
+    }
   }
 
 }

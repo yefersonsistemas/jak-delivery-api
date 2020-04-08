@@ -1,0 +1,73 @@
+<ion-header translucent>
+    <ion-toolbar>
+        <ion-title>Agregar producto</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+    <form [formGroup]="form" (ngSubmit)="onFormSubmit()">
+        <ion-grid>
+
+            <ion-row>
+                <ion-col size="12" *ngFor="let image of tempImages">
+                    <ion-card>
+                        <img [src]="image">
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="6">
+                    <ion-button expand="full" shape="round" (click)="camara()">
+                        <ion-icon slot="start" name="camera"></ion-icon>Cámara
+                    </ion-button>
+                </ion-col>
+                <ion-col size="6">
+                    <ion-button expand="full" shape="round">
+                        <ion-icon slot="start" name="images"></ion-icon>Galería
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="6">
+                    <ion-label position="floating">Nombre del producto</ion-label>
+                    <ion-input formControlName="name" type="text" required></ion-input>
+                </ion-col>
+                <ion-col size="6">
+                    <ion-label position="floating">Tipo de producto</ion-label>
+                    <ion-select placeholder="Elige uno">
+                        <ion-select-option value="Carne">Carne</ion-select-option>
+                        <ion-select-option value="Vegetales">Vegetales</ion-select-option>
+                    </ion-select>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="6">
+                    <ion-label position="floating">Precio en BS</ion-label>
+                    <ion-input formControlName="price_bs" type="text" required>
+                    </ion-input>
+                </ion-col>
+                <ion-col size="6">
+                    <ion-label position="floating">Precio en US</ion-label>
+                    <ion-input formControlName="price_us" type="text" required>
+                    </ion-input>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="12">
+                    <ion-label position="floating">Descripción</ion-label>
+                    <ion-textarea></ion-textarea>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col>
+                    <ion-button type="submit" color="primary" shape="full" expand="block">Agregar</ion-button>
+                </ion-col>
+            </ion-row>
+
+        </ion-grid>
+    </form>
+</ion-content>
