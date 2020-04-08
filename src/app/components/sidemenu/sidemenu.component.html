@@ -14,6 +14,11 @@
           <ion-label>Inicio</ion-label>
         </ion-item>
 
+        <ion-item routerLink="/profile-client" *ngIf="userRole == 'client'">
+          <ion-icon slot="start" name="person"></ion-icon>
+          <ion-label>Perfil</ion-label>
+        </ion-item>
+
 <!--   <ion-item [routerLink]="[opts.redirecTo]" *ngIf="userRole == 'client'">
           <ion-icon slot="start" [name]="opts.icon"></ion-icon>
           <ion-label>{{ opts.name }}</ion-label>

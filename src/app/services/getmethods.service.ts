@@ -12,4 +12,8 @@ export class GetmethodsService {
   getInfoAddress() {
     return this.http.get( Url + 'auth/address');
   }
+
+  getProviders() {
+    return this.http.get(Url + 'auth/providers/proveedor');
+  }
 }
