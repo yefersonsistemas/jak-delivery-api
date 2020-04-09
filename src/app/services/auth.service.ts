@@ -67,4 +67,17 @@ export class AuthService {
     this.storage.set('id', id), this.storage.set('role', role), this.storage.set('name', name);
   }
 
+  async readToken() {
+    if (this.storage.get('token')) {
+      this.token = await this.storage.get('token');
+    } else {
+      this.token = '';
+    }
+    return this.token;
+  }
+
+  isAuthenticated(): boolean {
+    return this.token.length > 2;
+  }
+
 }

@@ -14,6 +14,8 @@ import Swal from 'sweetalert2';
 })
 export class RegisterPage implements OnInit {
 
+  emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
+
   address: any[] = [];
   role: any[] = [];
 
@@ -57,7 +59,7 @@ export class RegisterPage implements OnInit {
       // this.alert.infoAlert('Verifique los campos requeridos');
     }
     // Envio del formulario al servicio
-    this.auth.register(this.registerUser).subscribe( resp => {
+    this.auth.register(this.registerUser).subscribe( (resp: any) => {
       console.log('resp desde ts', resp);
       // Condicion si el Correo ya esta registrado en la DB //****Nota: message no es un error.
       if (resp.message === 'Usuario ya se encuentra registrado!') {
