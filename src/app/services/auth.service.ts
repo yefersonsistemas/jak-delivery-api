@@ -4,7 +4,8 @@ import {  Usuario } from '../models/interface';
 import { Storage } from '@ionic/storage';
 import { map } from 'rxjs/operators';
 import { NavController } from '@ionic/angular';
-const Url = 'http://192.168.0.87/proyecto-a-api/public/api/';
+// const Url = 'http://192.168.0.87/proyecto-a-api/public/api/';
+const Url = 'http://127.0.0.1/proyecto-a-api/public/api/';
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +17,9 @@ export class AuthService {
   role: string = null;
   name: string = null;
 
-
   constructor(private http: HttpClient, private storage: Storage) { }
 
   register(usuario: Usuario) {
-
-    // return new Promise( resolve => {
 
       return this.http.post( Url + 'auth/register', usuario)
       .pipe(map(resp => {
