@@ -15,15 +15,15 @@ export class HomeClientPage implements OnInit {
   constructor( private http: HttpClient, private getmethods: GetmethodsService) { }
 
   ngOnInit() {
-    this.getmethods.getProviders().subscribe( (resp: any) => {
+    this.getmethods.getProviders().subscribe(( resp: any ) => {
       console.log(resp);
       this.providers = resp;
     });
   }
 
-  buscar(event){
-    // console.log(event);
+  search( event ) {
     this.textSearch = event.detail.value;
+    console.log(this.textSearch);
   }
 
 }
