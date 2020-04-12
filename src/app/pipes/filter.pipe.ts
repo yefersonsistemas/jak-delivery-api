@@ -25,6 +25,5 @@ export class FilterPipe implements PipeTransform {
     return array.filter( function( item: any ) {
       return JSON.stringify(item).toLowerCase().includes(text);
     });
-
   }
 }

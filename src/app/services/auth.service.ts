@@ -4,6 +4,7 @@ import {  Usuario } from '../models/interface';
 import { Storage } from '@ionic/storage';
 import { map } from 'rxjs/operators';
 import { NavController } from '@ionic/angular';
+import { IdModel } from '../models/id.model';
 // const Url = 'http://192.168.0.87/proyecto-a-api/public/api/';
 const Url = 'http://127.0.0.1/proyecto-a-api/public/api/';
 
@@ -41,6 +42,12 @@ export class AuthService {
       this.saveData(resp['id'], resp['role'], resp['name']);
 
       return resp;
+    }));
+  }
+
+  getProfile(id: string) {
+    return this.http.post( Url + 'auth/profiles/profile', id ).pipe(map(resp => {
+      console.log(resp);
     }));
   }
 

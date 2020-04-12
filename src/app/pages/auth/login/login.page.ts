@@ -19,14 +19,12 @@ export class LoginPage implements OnInit {
     email: '',
     password: '',
   };
-  
   constructor(private auth: AuthService, private alert: AlertserviceService, private NavCtrl: NavController) { }
 
   ngOnInit() {
   }
 
   login(fLogin: NgForm) {
-    
     // fomulario invalido
     if (fLogin.invalid) {
       // mensaje de formulario invalido

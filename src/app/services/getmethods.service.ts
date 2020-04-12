@@ -17,4 +17,6 @@ export class GetmethodsService {
   getProviders() {
     return this.http.get(Url + 'auth/providers/proveedor');
   }
+
+
 }
