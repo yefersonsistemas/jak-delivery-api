@@ -45,9 +45,11 @@ export class AuthService {
     }));
   }
 
-  getProfile(id: string) {
+  getProfile(id: IdModel) {
+    console.log('id dede el servicio (getprofile)', id);
     return this.http.post( Url + 'auth/profiles/profile', id ).pipe(map(resp => {
       console.log(resp);
+      return resp;
     }));
   }
 

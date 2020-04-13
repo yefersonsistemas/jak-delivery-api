@@ -10,18 +10,19 @@ import { IdModel } from '../../../models/id.model';
 })
 export class ProfileClientPage implements OnInit {
 
-id: string;
+id: IdModel = new IdModel;
 
   constructor(private storage: Storage, private auth: AuthService ) { }
 
   ngOnInit() {
     this.storage.get('id').then( val => {
       this.id = val;
-      console.log('id desde el perfil', this.id);
+      console.log('id desde el perfil', this.id.id);
     });
 
     this.auth.getProfile(this.id).subscribe((resp: any) => {
       console.log(resp);
+      console.log(this.id);
     });
 
     }
