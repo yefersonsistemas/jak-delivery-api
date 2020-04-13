@@ -8,11 +8,9 @@ import { ProductListPage } from './product-list.page';
 
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MbscModule } from '@mobiscroll/angular';
 
 @NgModule({
   imports: [
-    MbscModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

@@ -1,4 +1,4 @@
-import { MbscModule } from '@mobiscroll/angular';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,16 +14,17 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 
+import { ComponentsModule } from './components/components.module';
+import { PipesModule } from './pipes/pipes.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [ 
-    MbscModule, 
-    ReactiveFormsModule,
-    FormsModule,
-BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, IonicStorageModule.forRoot()],
-    exports: [],
+  exports: [],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,
+  FormsModule, ComponentsModule, IonicStorageModule.forRoot(), BrowserAnimationsModule,
+  PipesModule],
   providers: [
     StatusBar,
     SplashScreen,

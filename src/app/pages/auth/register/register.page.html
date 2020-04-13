@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/login" text="Login"></ion-back-button>
+      </ion-buttons>
     <ion-title>register</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -8,7 +11,6 @@
   <form (ngSubmit)="register(fRegister)" #fRegister="ngForm">
     <ion-grid fixed>
       <ion-row>
-        <ion-input type="hidden" name="role" value="client" [(ngModel)]="registerUser.role"></ion-input>
         <ion-col size="6"> <!-- input del nombre (cliente, courier o proveedor)-->
           <ion-item>
             <ion-label position="floating">Nombre</ion-label>
@@ -16,7 +18,7 @@
           </ion-item>
         </ion-col>
 
-        <ion-col size="6"> <!-- input del nombre (cliente o courier)-->
+        <ion-col size="6"> <!-- input del apellido (cliente o courier)-->
           <ion-item>
             <ion-label position="floating">Apellido</ion-label>
             <ion-input type="text" name="lastname" required [(ngModel)]="registerUser.lastname"></ion-input>
@@ -26,7 +28,7 @@
         <ion-col size="6"> <!-- input del Email (cliente, courier o proveedor)-->
           <ion-item>
             <ion-label position="floating">Email</ion-label>
-            <ion-input type="email" name="email" required [(ngModel)]="registerUser.email"></ion-input>
+            <ion-input type="email" name="email" required [(ngModel)]="registerUser.email" [pattern]="emailPattern"></ion-input>
           </ion-item>
         </ion-col>
 
@@ -54,21 +56,21 @@
           </ion-item>
         </ion-col>
 
-        <ion-col size="6" *ngFor="let address of address.estado"> <!-- input del Estado para la direccion (cliente, courier o proveedor)-->
+        <ion-col size="6" > <!-- input del Estado para la direccion (cliente, courier o proveedor)-->
           <ion-item>
             <ion-label position="floating">Estado</ion-label>
             <ion-select name="states_id" required [(ngModel)]="registerUser.states_id" okText="Aceptar" cancelText="Cancelar">
-              <ion-select-option value="{{address.id}}">{{address.name}}</ion-select-option>
+              <ion-select-option *ngFor="let address of address.estado" value="{{address.id}}">{{address.name}}</ion-select-option>
 
             </ion-select>
           </ion-item>
         </ion-col>
 
-        <ion-col size="6" *ngFor="let address of address.ciudad"> <!-- input de la Ciduad para la direccion (cliente, courier o proveedor)-->
+        <ion-col size="6" > <!-- input de la Ciduad para la direccion (cliente, courier o proveedor)-->
           <ion-item>
             <ion-label position="floating">Ciudad</ion-label>
             <ion-select name="cities_id" required [(ngModel)]="registerUser.cities_id" okText="Aceptar" cancelText="Cancelar">
-              <ion-select-option value="{{address.id}}" >{{address.name}}</ion-select-option>
+              <ion-select-option *ngFor="let address of address.ciudad" value="{{address.id}}" >{{address.name}}</ion-select-option>
 
             </ion-select>
           </ion-item>

@@ -11,5 +11,4 @@ export interface Usuario {
     parishes_id?: string;
     address?: string;
     password?: string;
-    role?: string;
 }

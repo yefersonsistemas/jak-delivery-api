@@ -3,6 +3,8 @@ import { AuthService } from '../../../services/auth.service';
 import { NgForm } from '@angular/forms';
 import { AlertserviceService } from '../../../services/alertservice.service';
 import { NavController } from '@ionic/angular';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-login',
@@ -11,35 +13,67 @@ import { NavController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  loginUser = {
+  emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
 
+  loginUser = {
     email: '',
     password: '',
-    role: 'client'
-
   };
-
   constructor(private auth: AuthService, private alert: AlertserviceService, private NavCtrl: NavController) { }
 
   ngOnInit() {
   }
 
-  async login(fLogin: NgForm) {
+  login(fLogin: NgForm) {
+    // fomulario invalido
+    if (fLogin.invalid) {
+      // mensaje de formulario invalido
+      Swal.fire({
+        icon: 'error',
+        title: 'Ingrese el Email y/o Password',
+        timer: 1500,
+        showConfirmButton: false,
+      });
+    }
 
-    if (fLogin.invalid) { this.alert.infoAlert('Ingrese el Email y/o Password'); }
+    // para mostrar mensaje en pantalla
+    Swal.fire({
+      icon: 'info',
+      title: 'Iniciando Sesion',
+      showConfirmButton: false,
+    });
+
+    Swal.showLoading();
+
 
     console.log(fLogin.valid);
-
     console.log(this.loginUser);
 
-    const valid = await this.auth.login(this.loginUser.email, this.loginUser.password, this.loginUser.role);
+    // comunicacion con el servio de auth para el login
+    this.auth.login(this.loginUser.email, this.loginUser.password).subscribe( resp => {
+      console.log(resp);
+      Swal.close();
+      this.NavCtrl.navigateRoot(['/home-client' ], { animated : true });
+    }, (error) => {
+      console.log('este es el error', error.error);
+      if (error.error.person) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Usuario No registrado',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+      if (error.error.message) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Contraseña Incorrecta',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
 
-
-    if (valid) {
-      this.NavCtrl.navigateRoot(['/main/tabs/tab1', { animated : true } ]);
-    } else {
-      this.alert.infoAlert('Usuario y/o Password es Incorrecto');
-    }
   }
 
 }
