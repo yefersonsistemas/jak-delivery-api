@@ -12,7 +12,7 @@
 
 <ion-content>
   <form action="">
-    <ion-grid fixed>
+    <ion-grid fixed ngForm="let profile of profile">
       <ion-row>
         <ion-col size="12">
           <ion-avatar>
@@ -22,19 +22,19 @@
         <ion-col size="12">
           <ion-item>
             <ion-label position="floating">Nombre</ion-label>
-            <ion-input type="text" name="name"></ion-input>
+            <ion-input type="text" name="name" value="{{ profile.name }}"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="12">
           <ion-item>
             <ion-label position="floating">Apellido</ion-label>
-            <ion-input type="text" name="lastname"></ion-input>
+            <ion-input type="text" name="lastname" value="{{ profile.lastname }}"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="4"> <!-- input del tipo de documento (cliente, courier o proveedor)-->
           <ion-item>
             <ion-label position="floating">Tipo</ion-label>
-            <ion-select name="type_dni" required okText="Aceptar" cancelText="Cancelar">
+            <ion-select name="type_dni" required okText="Aceptar" cancelText="Cancelar" value="{{ profile.type_dni }}">
               <ion-select-option name="type_dni" value="J">J</ion-select-option>
               <ion-select-option name="type_dni" value="V">V</ion-select-option>
               <ion-select-option name="type_dni" value="E">E</ion-select-option>
@@ -44,25 +44,25 @@
         <ion-col size="8"> <!-- input del numero de documento (cliente, courier o proveedor)-->
           <ion-item>
             <ion-label position="floating">N° documento</ion-label>
-            <ion-input type="text" name="dni" required></ion-input>
+            <ion-input type="text" name="dni" value="{{ profile.dni }}"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="12">
           <ion-item>
             <ion-label position="floating">Telefono</ion-label>
-            <ion-input type="text" name="phone"></ion-input>
+            <ion-input type="text" name="phone" value="{{ profile.phone }}"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="12">
           <ion-item>
             <ion-label position="floating">Correo electronico</ion-label>
-            <ion-input type="text" name="email"></ion-input>
+            <ion-input type="text" name="email" value="{{ profile.email }}"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="12">
           <ion-item>
             <ion-label position="floating">Direccion</ion-label>
-            <ion-input type="text" name="address"></ion-input>
+            <ion-input type="text" name="address" value="{{ profile.address?.address }}"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="12">

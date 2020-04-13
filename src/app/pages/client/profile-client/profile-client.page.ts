@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { AuthService } from '../../../services/auth.service';
-import { IdModel } from '../../../models/id.model';
 
 @Component({
   selector: 'app-profile-client',
@@ -10,19 +9,19 @@ import { IdModel } from '../../../models/id.model';
 })
 export class ProfileClientPage implements OnInit {
 
-id: IdModel = new IdModel;
+// id: IdModel = new IdModel;
+
+id = null;
+
+profile = [];
 
   constructor(private storage: Storage, private auth: AuthService ) { }
 
-  ngOnInit() {
-    this.storage.get('id').then( val => {
-      this.id = val;
-      console.log('id desde el perfil', this.id.id);
-    });
+async ngOnInit() {
+    this.id = await this.storage.get('id');
 
     this.auth.getProfile(this.id).subscribe((resp: any) => {
-      console.log(resp);
-      console.log(this.id);
+      this.profile = resp.profile;
     });
 
     }

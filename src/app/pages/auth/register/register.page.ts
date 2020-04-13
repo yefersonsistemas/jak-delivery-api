@@ -76,7 +76,7 @@ export class RegisterPage implements OnInit {
           timer: 1500,
           showConfirmButton: false,
         });
-        this.NavCtrl.navigateRoot(['/home-client'], { animated: true} );
+        this.NavCtrl.navigateRoot('/home-client', { animated: true} );
       }
     });
 

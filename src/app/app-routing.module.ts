@@ -15,24 +15,27 @@ const routes: Routes = [
   {
     path: 'home-client',
     loadChildren: () => import('./pages/client/home-client/home-client.module').then( m => m.HomeClientPageModule),
-    // canActivate: [UsersGuard]
+    // canLoad: [UsersGuard]
   },
   {
     path: 'profile-client',
     loadChildren: () => import('./pages/client/profile-client/profile-client.module').then( m => m.ProfileClientPageModule),
-    // canActivate: [UsersGuard]
+    // canLoad: [UsersGuard]
   },
   {
     path: 'product-create',
-    loadChildren: () => import('./pages/provider/product-create/product-create.module').then( m => m.ProductCreatePageModule)
+    loadChildren: () => import('./pages/provider/product-create/product-create.module').then( m => m.ProductCreatePageModule),
+    // canLoad: [UsersGuard]
   },
   {
     path: 'product-edit',
-    loadChildren: () => import('./pages/provider/product-edit/product-edit.module').then( m => m.ProductEditPageModule)
+    loadChildren: () => import('./pages/provider/product-edit/product-edit.module').then( m => m.ProductEditPageModule),
+    // canLoad: [UsersGuard]
   },
   {
     path: 'product-list',
-    loadChildren: () => import('./pages/provider/product-list/product-list.module').then( m => m.ProductListPageModule)
+    loadChildren: () => import('./pages/provider/product-list/product-list.module').then( m => m.ProductListPageModule),
+    // canLoad: [UsersGuard]
   },
 ];
 @NgModule({

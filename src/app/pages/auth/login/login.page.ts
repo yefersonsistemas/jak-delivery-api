@@ -53,7 +53,7 @@ export class LoginPage implements OnInit {
     this.auth.login(this.loginUser.email, this.loginUser.password).subscribe( resp => {
       console.log(resp);
       Swal.close();
-      this.NavCtrl.navigateRoot(['/home-client' ], { animated : true });
+      this.NavCtrl.navigateRoot('/home-client', { animated : true });
     }, (error) => {
       console.log('este es el error', error.error);
       if (error.error.person) {
