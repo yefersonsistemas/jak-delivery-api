@@ -1,4 +1,4 @@
-export interface Usuario {
+export interface User {
     name?: string;
     lastname?: string;
     email?: string;
@@ -11,4 +11,15 @@ export interface Usuario {
     parishes_id?: string;
     address?: string;
     password?: string;
+}
+
+export interface UserUpdate {
+    name?: string;
+    lastname?: string;
+    email?: string;
+    phone?: string;
+    type_dni?: string;
+    dni?: string;
+    address?: string;
+    // password?: string;
 }

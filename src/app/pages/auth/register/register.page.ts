@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { AlertserviceService } from '../../../services/alertservice.service';
 import { NgForm } from '@angular/forms';
-import { Usuario } from 'src/app/models/interface';
+import { User } from 'src/app/models/interface';
 import { NavController } from '@ionic/angular';
 import { GetmethodsService } from 'src/app/services/getmethods.service';
 import Swal from 'sweetalert2';
@@ -19,7 +19,7 @@ export class RegisterPage implements OnInit {
   address: any[] = [];
   role: any[] = [];
 
-  registerUser: Usuario = {
+  registerUser: User = {
     name: '',
     lastname: '',
     email: '',
@@ -56,7 +56,6 @@ export class RegisterPage implements OnInit {
         timer: 1500,
         showConfirmButton: false,
       });
-      // this.alert.infoAlert('Verifique los campos requeridos');
     }
     // Envio del formulario al servicio
     this.auth.register(this.registerUser).subscribe( (resp: any) => {

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {  Usuario } from '../models/interface';
+import {  User } from '../models/interface';
 import { Storage } from '@ionic/storage';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 const Url = 'http://192.168.0.87/proyecto-a-api/public/api/';
 // const Url = 'http://127.0.0.1/proyecto-a-api/public/api/';
@@ -17,11 +18,10 @@ export class AuthService {
   role: string = null;
   name: string = null;
 
-  // usuario: Usuario = {};
 
   constructor(private http: HttpClient, private storage: Storage) { }
   // metodo para enviar la informacion a la api (este es el registro)
-  register(usuario: Usuario) {
+  register(usuario: User) {
       return this.http.post( Url + 'auth/register', usuario)
       .pipe(map(resp => {
             return resp;
@@ -41,9 +41,9 @@ export class AuthService {
   // metodo para enviar la informacion a la api (este es el perfil del usuario)
   getProfile(id: string) {
     const userid = { id };
-    return this.http.post( Url + 'auth/profile', userid ).pipe(map(resp => {
-      return resp;
-    }));
+    return this.http.post( Url + 'auth/profile', userid )
+    // .pipe(map((resp: any) => resp.profile
+    // ), catchError( (error) => throwError('este es el error') ));
   }
 
   // metodo que limpia el storage despues del logout
@@ -80,5 +80,7 @@ export class AuthService {
   isAuthenticated(): boolean {
     return this.token.length > 2;
   }
+
+
 
 }
