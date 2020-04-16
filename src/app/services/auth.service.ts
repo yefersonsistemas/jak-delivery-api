@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {  User } from '../models/interface';
+import { User, UserUpdate } from '../models/interface';
 import { Storage } from '@ionic/storage';
 import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
@@ -22,10 +22,11 @@ export class AuthService {
   constructor(private http: HttpClient, private storage: Storage) { }
   // metodo para enviar la informacion a la api (este es el registro)
   register(usuario: User) {
-      return this.http.post( Url + 'auth/register', usuario)
-      .pipe(map(resp => {
-            return resp;
-          }));
+    console.log('info formulario de registro desde el servico', usuario);
+    return this.http.post( Url + 'auth/register', usuario)
+    .pipe(map(resp => {
+          return resp;
+        }));
   }
 
   // metodo para enviar la informacion y guardan el token que se envia de la api (este es el login)
@@ -41,9 +42,20 @@ export class AuthService {
   // metodo para enviar la informacion a la api (este es el perfil del usuario)
   getProfile(id: string) {
     const userid = { id };
-    return this.http.post( Url + 'auth/profile', userid )
+    return this.http.post( Url + 'auth/profile', userid );
     // .pipe(map((resp: any) => resp.profile
     // ), catchError( (error) => throwError('este es el error') ));
+  }
+  // metodo para actualizar el perfil del usuario
+  updateProfile( name: string, lastname: string, email: string, phone: string, type_dni: string, dni: string, address: string, id: string) {
+
+    const update = { name, lastname, email, phone , type_dni, dni, address, id };
+    console.log('envio de la informacion en el servicio', update);
+    return this.http.post( Url + 'auth/update', update).pipe(map(resp => {
+      console.log(resp);
+      return resp;
+    }));
+
   }
 
   // metodo que limpia el storage despues del logout
