@@ -1,165 +1,176 @@
-<ion-header>
-  <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="/login" text="Login"></ion-back-button>
-      </ion-buttons>
-    <ion-title>register</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <form (ngSubmit)="register(fRegister)" #fRegister="ngForm">
-    <ion-grid fixed>
-      <ion-row>
-        <ion-col size="6"> <!-- input del nombre (cliente, courier o proveedor)-->
-          <ion-item>
-            <ion-label position="floating">Nombre</ion-label>
-            <ion-input type="text" name="name" required [(ngModel)]="registerUser.name"></ion-input>
-          </ion-item>
-        </ion-col>
 
-        <ion-col size="6"> <!-- input del apellido (cliente o courier)-->
-          <ion-item>
-            <ion-label position="floating">Apellido</ion-label>
-            <ion-input type="text" name="lastname" required [(ngModel)]="registerUser.lastname"></ion-input>
-          </ion-item>
-        </ion-col>
+    <ion-slides class="mainSlide" #slidePrincipal>
 
-        <ion-col size="6"> <!-- input del Email (cliente, courier o proveedor)-->
-          <ion-item>
-            <ion-label position="floating">Email</ion-label>
-            <ion-input type="email" name="email" required [(ngModel)]="registerUser.email" [pattern]="emailPattern"></ion-input>
-          </ion-item>
-        </ion-col>
+        <ion-slide>
 
-        <ion-col size="6"> <!-- input del Telefono (cliente, courier o proveedor)-->
-          <ion-item>
-            <ion-label position="floating">Telefono</ion-label>
-            <ion-input type="text" name="phone" required [(ngModel)]="registerUser.phone"></ion-input>
-          </ion-item>
-        </ion-col>
+            <img src="assets/logo3.svg">
 
-        <ion-col size="4"> <!-- input del tipo de documento (cliente, courier o proveedor)-->
-          <ion-item>
-            <ion-label position="floating">Tipo</ion-label>
-            <ion-select [(ngModel)]="registerUser.type_dni" name="type_dni" required okText="Aceptar" cancelText="Cancelar">
-              <ion-select-option name="type_dni" value="J">J</ion-select-option>
-              <ion-select-option name="type_dni" value="V">V</ion-select-option>
-              <ion-select-option name="type_dni" value="E">E</ion-select-option>
-            </ion-select>
-          </ion-item>
-        </ion-col>
-        <ion-col size="8"> <!-- input del numero de documento (cliente, courier o proveedor)-->
-          <ion-item>
-            <ion-label position="floating">N° documento</ion-label>
-            <ion-input type="text" name="dni" required [(ngModel)]="registerUser.dni"></ion-input>
-          </ion-item>
-        </ion-col>
+            <form (ngSubmit)="register(fRegister)" #fRegister="ngForm">
+                <h2>Sign up</h2>
 
-        <ion-col size="6" > <!-- input del Estado para la direccion (cliente, courier o proveedor)-->
-          <ion-item>
-            <ion-label position="floating">Estado</ion-label>
-            <ion-select name="states_id" required [(ngModel)]="registerUser.states_id" okText="Aceptar" cancelText="Cancelar">
-              <ion-select-option *ngFor="let address of address.estado" value="{{address.id}}">{{address.name}}</ion-select-option>
+                <ion-grid fixed>
 
-            </ion-select>
-          </ion-item>
-        </ion-col>
+                    <ion-row>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label position="floating">Nombre</ion-label>
+                                <ion-input type="text" name="name" required [(ngModel)]="registerUser.name"></ion-input>
+                            </ion-item>
+                        </ion-col>
 
-        <ion-col size="6" > <!-- input de la Ciduad para la direccion (cliente, courier o proveedor)-->
-          <ion-item>
-            <ion-label position="floating">Ciudad</ion-label>
-            <ion-select name="cities_id" required [(ngModel)]="registerUser.cities_id" okText="Aceptar" cancelText="Cancelar">
-              <ion-select-option *ngFor="let address of address.ciudad" value="{{address.id}}" >{{address.name}}</ion-select-option>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label position="floating">Apellido</ion-label>
+                                <ion-input type="text" name="lastname" required [(ngModel)]="registerUser.lastname"></ion-input>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
 
-            </ion-select>
-          </ion-item>
-        </ion-col>
+                    <ion-row>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label position="floating">Email</ion-label>
+                                <ion-input type="email" name="email" required [(ngModel)]="registerUser.email" [pattern]="emailPattern"></ion-input>
+                            </ion-item>
+                        </ion-col>
 
-        <ion-col size="6" > <!-- input del Municipio para la direccion (cliente, courier o proveedor)-->
-          <ion-item>
-            <ion-label position="floating">Municipio</ion-label>
-            <ion-select name="municipalities_id" required [(ngModel)]="registerUser.municipalities_id" okText="Aceptar" cancelText="Cancelar">
-              <ion-select-option *ngFor="let address of address.municipio" value="{{address.id}}">{{address.name}}</ion-select-option>
-            </ion-select>
-          </ion-item>
-        </ion-col>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label position="floating">Telefono</ion-label>
+                                <ion-input type="text" name="phone" required [(ngModel)]="registerUser.phone"></ion-input>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
 
-        <ion-col size="6"> <!-- input de la parroquia para la direccion (cliente, courier o proveedor)-->
-          <ion-item>
-            <ion-label position="floating">Parroquia</ion-label>
-            <ion-select  name="parishes_id" required [(ngModel)]="registerUser.parishes_id" okText="Aceptar" cancelText="Cancelar">
-              <ion-select-option *ngFor="let address of address.parroquia" value="{{address.id}}">{{address.name}}</ion-select-option>
-            </ion-select>
-          </ion-item>
-        </ion-col>
+                    <ion-row>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label position="floating">Tipo</ion-label>
+                                <ion-select [(ngModel)]="registerUser.type_dni" name="type_dni" required okText="Aceptar" cancelText="Cancelar">
+                                    <ion-select-option name="type_dni" value="J">J</ion-select-option>
+                                    <ion-select-option name="type_dni" value="V">V</ion-select-option>
+                                    <ion-select-option name="type_dni" value="E">E</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
 
-        <ion-col size="12"> <!-- input de la direccion del domicilio para la direccion (cliente, courier o proveedor)-->
-          <ion-item>
-            <ion-label position="floating">Direccion de domicilio</ion-label>
-            <ion-input type="text" name="address" required [(ngModel)]="registerUser.address"></ion-input>
-          </ion-item>
-        </ion-col>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label position="floating">N° documento</ion-label>
+                                <ion-input type="text" name="dni" required [(ngModel)]="registerUser.dni"></ion-input>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
 
-        <ion-col size="12"> <!-- input del tipo de documento (cliente, courier o proveedor)-->
-          <ion-item>
-            <ion-label position="floating">Contraseña</ion-label>
-            <ion-input type="password" [(ngModel)]="registerUser.password" name="password" required></ion-input>
-          </ion-item>
-        </ion-col>
+                    <ion-row>
+                        <ion-col size="11">
+                            <ion-item>
+                                <ion-label position="floating">Contraseña</ion-label>
+                                <ion-input type="password" [(ngModel)]="registerUser.password" name="password" required></ion-input>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
 
-        <ion-col size="6">
-          <ion-button expand="block" shape="round" color="success" type="submit">
-            Registrarme
-          </ion-button>
-        </ion-col>
+                </ion-grid>
 
-        <ion-col size="6">
-          <ion-button expand="block" shape="round" color="danger" routerLink="/login">
-            Salir
-          </ion-button>
-        </ion-col>
+                <!-- Ribbon Comienzo -->
+                <div class="">
+                    <div class="">
+                        <div class="ribbon1 ribbon">
+                            <div class="ribbon2 ribbon ion-text-start">
+                                <ion-button fill="clear" shape="round" (click)="adelante()">
+                                    <ion-icon class="ion-icon2 " color="dark " size=" " src="assets/flecha1.svg "></ion-icon>
+                                </ion-button>
+                                <ion-button routerLink="/login" shape="round" size="small" color="light">Salir</ion-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Ribbon Fin -->
 
-      </ion-row>
-    </ion-grid>
-  </form>
+            </form>
+
+        </ion-slide>
+
+        <ion-slide>
+
+            <img src="assets/logo3.svg">
+
+            <form (ngSubmit)="register(fRegister)" #fRegister="ngForm">
+                <h2>Sign up</h2>
+                <ion-grid fixed>
+
+                    <ion-row>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label position="floating">Estado</ion-label>
+                                <ion-select name="states_id" required [(ngModel)]="registerUser.states_id" okText="Aceptar" cancelText="Cancelar">
+                                    <ion-select-option *ngFor="let address of address.estado" value="{{address.id}}">{{address.name}}</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+
+                        <ion-col>
+                            <ion-item>
+                                <ion-label position="floating">Ciudad</ion-label>
+                                <ion-select name="cities_id" required [(ngModel)]="registerUser.cities_id" okText="Aceptar" cancelText="Cancelar">
+                                    <ion-select-option *ngFor="let address of address.ciudad" value="{{address.id}}">{{address.name}}</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label position="floating">Municipio</ion-label>
+                                <ion-select name="municipalities_id" required [(ngModel)]="registerUser.municipalities_id" okText="Aceptar" cancelText="Cancelar">
+                                    <ion-select-option *ngFor="let address of address.municipio" value="{{address.id}}">{{address.name}}</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+
+                        <ion-col>
+                            <ion-item>
+                                <ion-label position="floating">Parroquia</ion-label>
+                                <ion-select name="parishes_id" required [(ngModel)]="registerUser.parishes_id" okText="Aceptar" cancelText="Cancelar">
+                                    <ion-select-option *ngFor="let address of address.parroquia" value="{{address.id}}">{{address.name}}</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label position="floating">Direccion de domicilio</ion-label>
+                                <ion-input type="text" name="address" required [(ngModel)]="registerUser.address"></ion-input>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+
+                </ion-grid>
+
+                <!-- Ribbon Comienzo -->
+                <div class="">
+                    <div class="">
+                        <div class="ribbon1 ribbon">
+                            <div class="ribbon2 ribbon ion-text-start">
+                                <ion-button fill="clear" shape="round" type="submit">
+                                    <ion-icon class="ion-icon2 " color="dark " size=" " src="assets/flecha1.svg "></ion-icon>
+                                </ion-button>
+                                <ion-button shape="round" size="small" color="light" (click)="atras()">Atras</ion-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Ribbon Fin -->
+
+            </form>
+
+        </ion-slide>
+
+    </ion-slides>
+
 </ion-content>
-
-<!-- <ion-footer no-border>
-  <ion-toolbar>
-    
-    <ion-row>
-
-      <ion-col>
-          <ion-button shape="round"
-                      expand="full"
-                      size="small"
-                      color="tertiary">
-            Cliente
-          </ion-button>
-      </ion-col>
-
-      <ion-col>
-        <ion-button shape="round"
-                    expand="full"
-                    size="small"
-                    color="tertiary">
-          Empresa
-        </ion-button>
-      </ion-col>
-
-      <ion-col>
-        <ion-button shape="round"
-                    expand="full"
-                    size="small"
-                    color="tertiary">
-          Delivery
-        </ion-button>
-      </ion-col>
-
-    </ion-row>
-
-
-
-  </ion-toolbar>
-</ion-footer> -->

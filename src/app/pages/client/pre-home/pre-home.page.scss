@@ -16,29 +16,70 @@ $pg_thick: 2px;
     z-index: 1;
 }
 
+.ribbon1:before,
+.ribbon1:after {
+    content: '';
+    position: absolute;
+    right: 100%;
+    /* I use this instead of right: 0 to avoid 1px rounding errors */
+    margin-right: -9px;
+    /* I use this because I am using left: 100% */
+    width: 9px;
+    height: 9px;
+    border-left: 9px solid #ED145B;
+    z-index: -1;
+}
+
+.ribbon1:before {
+    top: -9px;
+    border-bottom: 9px solid #ED145B;
+    border-bottom-left-radius: 18px;
+}
+
+.ribbon1:after {
+    bottom: -9px;
+    border-top: 9px solid #ED145B;
+    border-top-left-radius: 18px;
+}
+
 .ribbon2 {
     border-radius: 50px 0 0 50px;
-    width: 100px;
-    height: 50px;
+    width: 75px;
+    height: 60px;
     background: #ED145B;
-    bottom: 100px;
-    right: 10em;
+    bottom: 50px;
+    right: 24px;
     z-index: 1;
 }
 
-.ribbon::after {
-    content: "";
+.ribbon2:before,
+.ribbon2:after {
+    content: '';
     position: absolute;
-    background-color: transparent;
-    bottom: -50px;
-    height: 50px;
-    width: 25px;
-    border-top-right-radius: 25px;
-    box-shadow: 0 -25px 0 0 #ED145B;
+    left: 100%;
+    /* I use this instead of right: 0 to avoid 1px rounding errors */
+    margin-left: -9px;
+    /* I use this because I am using left: 100% */
+    width: 9px;
+    height: 9px;
+    border-right: 9px solid #ED145B;
+    z-index: -1;
+}
+
+.ribbon2:before {
+    top: -9px;
+    border-bottom: 9px solid #ED145B;
+    border-bottom-right-radius: 18px;
+}
+
+.ribbon2:after {
+    bottom: -9px;
+    border-top: 9px solid #ED145B;
+    border-top-right-radius: 18px;
 }
 
 .ion-margin-top {
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .ion-margin-sides {
@@ -46,11 +87,21 @@ $pg_thick: 2px;
     margin-left: 50px;
 }
 
-ion-icon {
-    margin-top: 10px;
-    color: white;
-}
-
 .no-shadow {
     box-shadow: none !important;
+}
+
+.ion-icon2 {
+    border-radius: 50%;
+    background-color: white;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    box-sizing: border-box;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.ion-margin-bottom {
+    margin-bottom: 10px;
 }

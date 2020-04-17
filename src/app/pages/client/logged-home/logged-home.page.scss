@@ -21,7 +21,7 @@ $pg_thick: 2px;
     width: 200px;
     height: 60px;
     background: #ED145B;
-    bottom: 40px;
+    bottom: 50px;
     right: 24px;
     z-index: 1;
 }
@@ -52,6 +52,15 @@ $pg_thick: 2px;
     border-top-right-radius: 18px;
 }
 
+.ion-margin-top {
+    margin-top: 50px;
+}
+
+.ion-margin-sides {
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
 .no-shadow {
     box-shadow: none !important;
 }
@@ -59,18 +68,11 @@ $pg_thick: 2px;
 .ion-icon2 {
     border-radius: 50%;
     background-color: white;
-    top: 0;
-    width: 21px;
-    height: 21px;
+    width: 40px;
+    height: 40px;
     box-sizing: border-box;
-    padding: 5px;
-    margin-top: 5px;
 }
 
-img {
-    width: 120px;
-}
-
-ion-button {
-    margin-top: 10px;
+.ion-margin-bottom {
+    margin-bottom: 10px;
 }

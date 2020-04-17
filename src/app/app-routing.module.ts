@@ -38,6 +38,10 @@ const routes: Routes = [
     path: 'pre-home',
     loadChildren: () => import('./pages/client/pre-home/pre-home.module').then( m => m.PreHomePageModule)
   },
+  {
+    path: 'logged-home',
+    loadChildren: () => import('./pages/client/logged-home/logged-home.module').then( m => m.LoggedHomePageModule)
+  },
 ];
 @NgModule({
   imports: [
