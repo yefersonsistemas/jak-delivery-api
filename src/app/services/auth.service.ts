@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {  User } from '../models/interface';
+import { User, UserUpdate } from '../models/interface';
 import { Storage } from '@ionic/storage';
 import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
@@ -41,9 +41,16 @@ export class AuthService {
   // metodo para enviar la informacion a la api (este es el perfil del usuario)
   getProfile(id: string) {
     const userid = { id };
-    return this.http.post( Url + 'auth/profile', userid )
+    return this.http.post( Url + 'auth/profile', userid );
     // .pipe(map((resp: any) => resp.profile
     // ), catchError( (error) => throwError('este es el error') ));
+  }
+
+  updateProfile(profile: UserUpdate, id: string) {
+    const update = { profile, id};
+    return this.http.post( Url + 'auth/profile', update).pipe(map(resp => {
+      return resp;
+    }));
   }
 
   // metodo que limpia el storage despues del logout

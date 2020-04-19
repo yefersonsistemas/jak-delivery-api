@@ -17,16 +17,7 @@ export class ProfileClientPage implements OnInit {
 
   profile: any = {};
 
-  userUpdate: UserUpdate = {
-    name: '',
-    lastname: '',
-    email: '',
-    phone: '',
-    type_dni: '',
-    dni: '',
-    address: '',
-    // password: '',
-  };
+  userUpdate: UserUpdate = {};
 
   constructor(private storage: Storage, private auth: AuthService ) { }
 
@@ -40,16 +31,13 @@ async ngOnInit() {
     });
     }
 
-    updateUser( fUpdate: NgForm) {
+    async updateUser( fUpdate: NgForm) {
 
-      if ( fUpdate.invalid) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Verifique los campos requeridos',
-          timer: 1500,
-          showConfirmButton: false,
-        });
-      }
-      console.log(this.userUpdate);
+      this.id = await this.storage.get('id');
+      console.log('formulario mas id del usuario', this.userUpdate + this.id);
+
+      this.auth.updateProfile(this.userUpdate, this.id).subscribe(resp => {
+        console.log(resp);
+      });
     }
 }
