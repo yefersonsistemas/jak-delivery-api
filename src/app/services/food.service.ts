@@ -7,11 +7,14 @@ const Url = 'http://192.168.0.87/proyecto-a-api/public/api/';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class FoodService {
 
   constructor(private http: HttpClient) { }
 
-  // getFood( id: string ) {
-  //   return this.http.post(Url + '', id);
-  // }
+  getFood( id: string ) {
+    const provid = {
+      id
+    };
+    return this.http.post(Url + 'auth/orders/food', provid);
+  }
 }

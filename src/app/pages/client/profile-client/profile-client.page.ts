@@ -58,7 +58,7 @@ async ngOnInit() {
     if (resp.message === 'Usuario actualizado') {
       Swal.fire({
         icon: 'success',
-        title: 'Datos Actualizados con Exito',
+        title: 'Datos Actualizados',
         timer: 1500,
         showConfirmButton: false,
       });
