@@ -21,5 +21,5 @@ export interface UserUpdate {
     type_dni?: string;
     dni?: string;
     address?: string;
-    // password?: string;
+    // id?: string;
 }

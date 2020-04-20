@@ -17,7 +17,6 @@ export class RegisterPage implements OnInit {
   emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
 
   address: any[] = [];
-  role: any[] = [];
 
   registerUser: User = {
     name: '',
@@ -57,6 +56,7 @@ export class RegisterPage implements OnInit {
         showConfirmButton: false,
       });
     }
+    console.log(this.registerUser);
     // Envio del formulario al servicio
     this.auth.register(this.registerUser).subscribe( (resp: any) => {
       console.log('resp desde ts', resp);

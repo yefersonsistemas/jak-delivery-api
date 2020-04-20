@@ -25,11 +25,12 @@ export class SidemenuComponent implements OnInit {
 
   constructor(private auth: AuthService, private navCtrl: NavController, private storage: Storage) { }
 
-  ngOnInit() {
-  this.storage.get('role').then((val) => {
-    this.userRole = val;
-    console.log('role/s del usurio', this.userRole);
-  });
+  async ngOnInit() {
+  this.userRole = await this.storage.get('role');
+  // .then((val) => {
+  //   this.userRole = val;
+  //   console.log('role/s del usurio', this.userRole);
+  // });
 
   }
 
