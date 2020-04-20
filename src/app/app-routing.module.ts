@@ -23,6 +23,14 @@ const routes: Routes = [
     // canLoad: [UsersGuard]
   },
   {
+    path: 'restaurant-list',
+    loadChildren: () => import('./pages/client/restaurant-list/restaurant-list.module').then( m => m.RestaurantListPageModule)
+  },
+  {
+    path: 'restaurant-food/:id',
+    loadChildren: () => import('./pages/client/restaurant-food/restaurant-food.module').then( m => m.RestaurantFoodPageModule)
+  },
+  {
     path: 'product-create',
     loadChildren: () => import('./pages/provider/product-create/product-create.module').then( m => m.ProductCreatePageModule),
     // canLoad: [UsersGuard]
@@ -37,6 +45,9 @@ const routes: Routes = [
     loadChildren: () => import('./pages/provider/product-list/product-list.module').then( m => m.ProductListPageModule),
     // canLoad: [UsersGuard]
   },
+
+
+
 ];
 @NgModule({
   imports: [
