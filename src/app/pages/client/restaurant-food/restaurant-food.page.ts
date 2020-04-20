@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FoodService } from '../../../services/food.service';
 
 @Component({
@@ -37,12 +37,12 @@ export class RestaurantFoodPage implements OnInit {
 
   id: any;
 
-  constructor(private acroute: ActivatedRoute, private food: FoodService) {
+  constructor(private acroute: ActivatedRoute, private food: FoodService, private router: Router) {
   }
 
   ngOnInit() {
     this.acroute.params.subscribe(params => {
-      console.log(params);
+      // console.log(params);
       this.id = params.id;
     });
     this.food.getFood(this.id).subscribe((resp: any) => {
@@ -172,6 +172,7 @@ export class RestaurantFoodPage implements OnInit {
 
   goOrder(id: string) {
     console.log(id);
+    this.router.navigate(['/restaurant-food', id]);
   }
 
 }

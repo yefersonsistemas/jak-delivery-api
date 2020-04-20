@@ -24,11 +24,18 @@ const routes: Routes = [
   },
   {
     path: 'restaurant-list',
-    loadChildren: () => import('./pages/client/restaurant-list/restaurant-list.module').then( m => m.RestaurantListPageModule)
+    loadChildren: () => import('./pages/client/restaurant-list/restaurant-list.module').then( m => m.RestaurantListPageModule),
+    // canLoad: [UsersGuard]
   },
   {
     path: 'restaurant-food/:id',
-    loadChildren: () => import('./pages/client/restaurant-food/restaurant-food.module').then( m => m.RestaurantFoodPageModule)
+    loadChildren: () => import('./pages/client/restaurant-food/restaurant-food.module').then( m => m.RestaurantFoodPageModule),
+    // canLoad: [UsersGuard]
+  },
+  {
+    path: 'create-order/:id',
+    loadChildren: () => import('./pages/client/create-order/create-order.module').then( m => m.CreateOrderPageModule),
+  // canLoad: [UsersGuard]
   },
   {
     path: 'product-create',
@@ -45,6 +52,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/provider/product-list/product-list.module').then( m => m.ProductListPageModule),
     // canLoad: [UsersGuard]
   },
+
 
 
 
