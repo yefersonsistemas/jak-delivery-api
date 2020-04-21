@@ -15,7 +15,7 @@
     <ion-row>
       <ion-col size="12">
 
-        <ion-card *ngFor="let arabian of foodArabian" >
+        <ion-card *ngFor="let arabian of foodArabian" (click)="arabianOrder(arabian.id)">
           <ion-grid fixed>
             <ion-row>
               <ion-col size="12">
@@ -35,7 +35,7 @@
           </ion-grid>
         </ion-card>
 
-        <ion-card *ngFor="let bakery of foodBakery">
+        <ion-card *ngFor="let bakery of foodBakery" (click)="bakeryOrder(bakery.id)">
           <ion-grid fixed>
             <ion-row>
               <ion-col size="12">
@@ -55,7 +55,7 @@
           </ion-grid>
         </ion-card>
 
-        <ion-card *ngFor="let burguer of foodBurguer">
+        <ion-card *ngFor="let burguer of foodBurguer" (click)="burguerOrder(burguer.id)">
           <ion-grid fixed>
             <ion-row>
               <ion-col size="12">
@@ -75,7 +75,7 @@
           </ion-grid>
         </ion-card>
 
-        <ion-card *ngFor="let chicken of foodChicken">
+        <ion-card *ngFor="let chicken of foodChicken" (click)="chickenOrder(chicken.id)"> 
           <ion-grid fixed>
             <ion-row>
               <ion-col size="12">
@@ -95,7 +95,7 @@
           </ion-grid>
         </ion-card>
 
-        <ion-card *ngFor="let chinese of foodChinese">
+        <ion-card *ngFor="let chinese of foodChinese" (click)="chineseOrder(chinese.id)">
           <ion-grid fixed>
             <ion-row>
               <ion-col size="12">
@@ -115,7 +115,7 @@
           </ion-grid>
         </ion-card>
 
-        <ion-card *ngFor="let indian of foodIndian">
+        <ion-card *ngFor="let indian of foodIndian" (click)="indianOrder(indian.id)">
           <ion-grid fixed>
             <ion-row>
               <ion-col size="12">
@@ -135,7 +135,7 @@
           </ion-grid>
         </ion-card>
 
-        <ion-card *ngFor="let italian of foodItalian">
+        <ion-card *ngFor="let italian of foodItalian" (click)="italianOrder(italian.id)">
           <ion-grid fixed>
             <ion-row>
               <ion-col size="12">
@@ -155,7 +155,7 @@
           </ion-grid>
         </ion-card>
 
-        <ion-card *ngFor="let japanese of foodJapanese">
+        <ion-card *ngFor="let japanese of foodJapanese" (click)="japaneseOrder(japanese.id)">
           <ion-grid fixed>
             <ion-row>
               <ion-col size="12">
@@ -175,7 +175,7 @@
           </ion-grid>
         </ion-card>
 
-        <ion-card *ngFor="let korean of foodKorean">
+        <ion-card *ngFor="let korean of foodKorean" (click)="koreanOrder(korean.id)">
           <ion-grid fixed>
             <ion-row>
               <ion-col size="12">
@@ -195,7 +195,7 @@
           </ion-grid>
         </ion-card>
 
-        <ion-card *ngFor="let lunch of foodLunch">
+        <ion-card *ngFor="let lunch of foodLunch" (click)="lunchOrder(lunch.id)">
           <ion-grid fixed>
             <ion-row>
               <ion-col size="12">
@@ -215,7 +215,7 @@
           </ion-grid>
         </ion-card>
 
-        <ion-card *ngFor="let mexican of foodMexican">
+        <ion-card *ngFor="let mexican of foodMexican" (click)="mexicanOrder(mexican.id)">
           <ion-grid fixed>
             <ion-row>
               <ion-col size="12">
@@ -235,7 +235,7 @@
           </ion-grid>
         </ion-card>
 
-        <ion-card *ngFor="let pizza of foodPizza">
+        <ion-card *ngFor="let pizza of foodPizza" (click)="pizzaOrder(pizza.id)">
           <ion-grid fixed>
             <ion-row>
               <ion-col size="12">
@@ -255,7 +255,7 @@
           </ion-grid>
         </ion-card>
 
-        <ion-card *ngFor="let salad of foodSalad">
+        <ion-card *ngFor="let salad of foodSalad" (click)="saladOrder(salad.id)">
           <ion-grid fixed>
             <ion-row>
               <ion-col size="12">
@@ -275,27 +275,27 @@
           </ion-grid>
         </ion-card>
 
-        <ion-card *ngFor="let tradicinal of foodTradicional">
+        <ion-card *ngFor="let traditional of foodTradicional" (click)="traditionalOrder(traditional.id)">
           <ion-grid fixed>
             <ion-row>
               <ion-col size="12">
-                <!-- <ion-img src="{{ tradicinal.image.path }}"></ion-img> -->
+                <!-- <ion-img src="{{ traditional.image.path }}"></ion-img> -->
               </ion-col>
               <ion-col size="12">
                 <ion-card-title>
-                  {{ tradicinal.name }}
+                  {{ traditional.name }}
                 </ion-card-title>
               </ion-col>
               <ion-col size="6">
                 <ion-card-subtitle>
-                  BS.{{ tradicinal.price_bs }}/USD.{{ tradicinal.price_us }}
+                  BS.{{ traditional.price_bs }}/USD.{{ traditional.price_us }}
                 </ion-card-subtitle>
               </ion-col>
             </ion-row>
           </ion-grid>
         </ion-card>
 
-        <ion-card *ngFor="let vegan of foodVegan">
+        <ion-card *ngFor="let vegan of foodVegan" (click)="veganOrder(vegan.id)">
           <ion-grid fixed>
             <ion-row>
               <ion-col size="12">
@@ -315,7 +315,7 @@
           </ion-grid>
         </ion-card>
 
-        <ion-card *ngFor="let vegetarian of foodVegetarian">
+        <ion-card *ngFor="let vegetarian of foodVegetarian" (click)="vegetarianOrder(vegetarian.id)">
           <ion-grid fixed>
             <ion-row>
               <ion-col size="12">
@@ -335,7 +335,7 @@
           </ion-grid>
         </ion-card>
 
-        <ion-card *ngFor="let delicatesse of delicatesse">
+        <ion-card *ngFor="let delicatesse of delicatesse" (click)="delicatesseOrder(delicatesse.id)">
           <ion-grid fixed>
             <ion-row>
               <ion-col size="12">
@@ -355,7 +355,7 @@
           </ion-grid>
         </ion-card>
 
-        <ion-card *ngFor="let drink of drinks">
+        <ion-card *ngFor="let drink of drinks" (click)="drinkOrder(drink.id)">
           <ion-grid fixed>
             <ion-row>
               <ion-col size="12">
@@ -375,7 +375,27 @@
           </ion-grid>
         </ion-card>
 
-        <ion-card *ngFor="let fridge of fridge">
+        <ion-card *ngFor="let extras of extras" (click)="extrasOrder(extras.id)">
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12">
+                <!-- <ion-img src="{{ drink.image.path }}"></ion-img> -->
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-title>
+                  {{ extras.name }}
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>
+                  BS.{{ extras.price_bs }}/USD.{{ extras.price_us }}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+
+        <ion-card *ngFor="let fridge of fridge" (click)="fridgeOrder(fridge.id)">
           <ion-grid fixed>
             <ion-row>
               <ion-col size="12">
@@ -395,7 +415,7 @@
           </ion-grid>
         </ion-card>
 
-        <ion-card *ngFor="let fruit of fruit">
+        <ion-card *ngFor="let fruit of fruit" (click)="fruitOrder(fruit.id)">
           <ion-grid fixed>
             <ion-row>
               <ion-col size="12">
@@ -416,7 +436,7 @@
         </ion-card>
         
 
-        <ion-card *ngFor="let greengrocer of greengrocer">
+        <ion-card *ngFor="let greengrocer of greengrocer" (click)="greengrocerOrder(greengrocer.id)">
           <ion-grid fixed>
             <ion-row>
               <ion-col size="12">
@@ -436,7 +456,7 @@
           </ion-grid>
         </ion-card>
 
-        <ion-card *ngFor="let liquor of liquor">
+        <ion-card *ngFor="let liquor of liquor" (click)="liquorOrder(liquor.id)">
           <ion-grid fixed>
             <ion-row>
               <ion-col size="12">
@@ -456,7 +476,7 @@
           </ion-grid>
         </ion-card>
 
-        <ion-card *ngFor="let victual of victual">
+        <ion-card *ngFor="let victual of victual" (click)="victualOrder(victual.id)">
           <ion-grid fixed>
             <ion-row>
               <ion-col size="12">
