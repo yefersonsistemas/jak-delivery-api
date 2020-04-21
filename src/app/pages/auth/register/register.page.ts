@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { AlertserviceService } from '../../../services/alertservice.service';
 import { NgForm } from '@angular/forms';
-import { Usuario } from 'src/app/models/interface';
 import { IonSlides, NavController } from '@ionic/angular';
+import { User } from 'src/app/models/interface';
 import { GetmethodsService } from 'src/app/services/getmethods.service';
 import Swal from 'sweetalert2';
 
@@ -19,9 +19,8 @@ export class RegisterPage implements OnInit {
   emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
 
   address: any[] = [];
-  role: any[] = [];
 
-  registerUser: Usuario = {
+  registerUser: User = {
     name: '',
     lastname: '',
     email: '',
@@ -61,8 +60,8 @@ export class RegisterPage implements OnInit {
         timer: 1500,
         showConfirmButton: false,
       });
-      // this.alert.infoAlert('Verifique los campos requeridos');
     }
+    console.log(this.registerUser);
     // Envio del formulario al servicio
     this.auth.register(this.registerUser).subscribe( (resp: any) => {
       console.log('resp desde ts', resp);
@@ -81,7 +80,7 @@ export class RegisterPage implements OnInit {
           timer: 1500,
           showConfirmButton: false,
         });
-        this.NavCtrl.navigateRoot(['/home-client'], { animated: true} );
+        this.NavCtrl.navigateRoot('/home-client', { animated: true} );
       }
     });
 

@@ -4,39 +4,33 @@
       <ion-menu-button menu="primerMenu"></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
+  <ion-searchbar animated (ionChange)="search($event)"></ion-searchbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
 
   <ion-grid fixed>
     <ion-row>
-      <ion-col size="12">
+      <!-- <ion-col size="12">
         <ion-searchbar animated (ionChange)="search($event)"></ion-searchbar>
-      </ion-col>
+      </ion-col> -->
       <ion-col size="12">
-        <ion-card *ngFor="let providers of providers | filter: textSearch:''">
+
+        <ion-card *ngFor="let category of categories" (click)="goRestaurant()">
           <ion-grid fixed>
             <ion-row>
               <ion-col size="12">
-                <!-- <ion-img src="assets/comida.jpg"></ion-img> -->
               </ion-col>
               <ion-col size="12">
                 <ion-card-title>
-                  {{ providers.person.name }}
+                  {{category.title }}
                 </ion-card-title>
-              </ion-col>
-              <ion-col size="6">
-                <ion-card-subtitle>
-                  <ion-icon name="bicycle" size="large"></ion-icon><br>
-                  BS.{{ providers.price_delivery }}
-                </ion-card-subtitle>
               </ion-col>
             </ion-row>
           </ion-grid>
-          
         </ion-card>
+
       </ion-col>
-      <!-- <ion-col size="6"></ion-col> -->
     </ion-row>
   </ion-grid>
 

@@ -16,18 +16,18 @@ export class UsersGuard implements CanActivate, CanLoad { //
       console.log('token en el guard', this.auth.isAuthenticated());
       return true;
     } else {
-      this.navCtrl.navigateRoot(['/login'], {animated: true});
+      this.navCtrl.navigateRoot('/login', {animated: true});
       return false;
     }
-    return false;
+    // return false;
   }
   canLoad(): Observable<boolean> | Promise<boolean> | boolean {
-    // if (this.auth.isAuthenticated()) {
-    //   return true;
-    // } else {
-    //   this.navCtrl.navigateRoot(['/login'], {animated: true});
-    //   return false;
-    // }
-    return false;
+    if (this.auth.isAuthenticated()) {
+      return true;
+    } else {
+      this.navCtrl.navigateRoot('/login', {animated: true});
+      return false;
+    }
+    // return false;
   }
 }
