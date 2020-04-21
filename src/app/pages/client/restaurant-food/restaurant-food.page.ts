@@ -170,7 +170,7 @@ export class RestaurantFoodPage implements OnInit {
     });
   }
 
-  goOrder(id: string) {
+  goArabianOrder(id: string) {
     console.log(id);
     this.router.navigate(['/restaurant-food', id]);
   }

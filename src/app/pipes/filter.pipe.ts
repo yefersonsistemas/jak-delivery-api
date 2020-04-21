@@ -22,6 +22,7 @@ export class FilterPipe implements PipeTransform {
 
     text = text.toLowerCase();
 
+    // tslint:disable-next-line: only-arrow-functions
     return array.filter( function( item: any ) {
       return JSON.stringify(item).toLowerCase().includes(text);
     });
