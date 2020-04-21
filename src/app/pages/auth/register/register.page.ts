@@ -3,7 +3,7 @@ import { AuthService } from '../../../services/auth.service';
 import { AlertserviceService } from '../../../services/alertservice.service';
 import { NgForm } from '@angular/forms';
 import { Usuario } from 'src/app/models/interface';
-import { NavController } from '@ionic/angular';
+import { IonSlides, NavController } from '@ionic/angular';
 import { GetmethodsService } from 'src/app/services/getmethods.service';
 import Swal from 'sweetalert2';
 
@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 })
 export class RegisterPage implements OnInit {
 
-@ViewChild('slidePrincipal') slides: IonSlides;
+  @ViewChild('slidePrincipal', { static: true }) slides: IonSlides;
 
   emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
 
