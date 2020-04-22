@@ -11,7 +11,7 @@ export class CreateOrderPage implements OnInit {
 
   id: any;
   type: any;
-  providerid: any;
+  provider_id: any;
 
   constructor( private acroute: ActivatedRoute, private food: FoodService) { }
 
@@ -20,7 +20,7 @@ export class CreateOrderPage implements OnInit {
       console.log(params);
       this.id = params.id; // parametro del id de la comida
       this.type = params.type; // parametro del tipo de la comida
-      this.providerid = params.providerid; // parametro del id del proveedor
+      this.provider_id = params.providerid; // parametro del id del proveedor
     });
   }
 
