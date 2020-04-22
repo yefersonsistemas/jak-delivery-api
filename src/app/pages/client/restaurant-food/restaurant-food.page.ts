@@ -41,7 +41,7 @@ export class RestaurantFoodPage implements OnInit {
 
   type: any;
   id: any;
-  
+
   constructor(private acroute: ActivatedRoute, private food: FoodService, private router: Router) {
   }
 

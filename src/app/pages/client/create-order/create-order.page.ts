@@ -8,7 +8,7 @@ import { FoodService } from '../../../services/food.service';
   styleUrls: ['./create-order.page.scss'],
 })
 export class CreateOrderPage implements OnInit {
-
+  path = 'http://192.168.0.87/proyecto-a-api/storage/app/public/';
   id: any;
   type: any;
   provider_id: any;
