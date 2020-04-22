@@ -9,6 +9,8 @@ import { FoodService } from '../../../services/food.service';
 })
 export class RestaurantFoodPage implements OnInit {
 
+  textSearch = '';
+
   foodArabian: any[] = [];
   foodBakery: any[] = [];
   foodBurguer: any[] = [];
@@ -37,7 +39,7 @@ export class RestaurantFoodPage implements OnInit {
 
   type: any;
   id: any;
-
+  
   constructor(private acroute: ActivatedRoute, private food: FoodService, private router: Router) {
   }
 
@@ -169,6 +171,11 @@ export class RestaurantFoodPage implements OnInit {
         // console.log('viveres', this.victual);
       }
     });
+  }
+
+  search( event ) {
+    this.textSearch = event.detail.value;
+    console.log(this.textSearch);
   }
 
   arabianOrder(id: string, type: any, providerid: string) {
