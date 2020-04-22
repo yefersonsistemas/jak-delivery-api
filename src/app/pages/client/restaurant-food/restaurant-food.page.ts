@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FoodService } from '../../../services/food.service';
 
+// const path = 'http://192.168.0.87/proyecto-a-api/public/api/';
+
 @Component({
   selector: 'app-restaurant-food',
   templateUrl: './restaurant-food.page.html',
@@ -10,7 +12,7 @@ import { FoodService } from '../../../services/food.service';
 export class RestaurantFoodPage implements OnInit {
 
   textSearch = '';
-
+  path = 'http://192.168.0.87/proyecto-a-api/storage/app/public/';
   foodArabian: any[] = [];
   foodBakery: any[] = [];
   foodBurguer: any[] = [];
@@ -49,7 +51,7 @@ export class RestaurantFoodPage implements OnInit {
       this.id = params.id;
     });
     this.food.getFood(this.id).subscribe((resp: any) => {
-      console.log(resp);
+      // console.log(resp);
 
       if (resp.arabian != null) { // Para asignar el array de cimida arabe a la variable foodArabian y leerla en las cartas
         this.foodArabian = resp.arabian;
@@ -63,7 +65,7 @@ export class RestaurantFoodPage implements OnInit {
 
       if (resp.burguer != null) {
         this.foodBurguer = resp.burguer;
-        // console.log('hamburguesas', this.foodBurguer);
+        console.log('hamburguesas', this.foodBurguer);
       }
 
       if (resp.chicken != null) {

@@ -42,10 +42,11 @@
         <ion-col size="4"> <!-- input del tipo de documento (cliente, courier o proveedor)-->
           <ion-item>
             <ion-label position="floating">Tipo</ion-label>
-            <ion-select [(ngModel)]="registerUser.type_dni" name="type_dni" required okText="Aceptar" cancelText="Cancelar">
-              <ion-select-option name="type_dni" value="J">J</ion-select-option>
-              <ion-select-option name="type_dni" value="V">V</ion-select-option>
-              <ion-select-option name="type_dni" value="E">E</ion-select-option>
+            <ion-select [(ngModel)]="registerUser.type_dni" interface="action-sheet" name="type_dni" required 
+            okText="Aceptar" cancelText="Cancelar" [interfaceOptions]="customActionSheetOptions">
+              <ion-select-option name="type_dni" value="J">Juridico</ion-select-option>
+              <ion-select-option name="type_dni" value="V">Venezolano/a</ion-select-option>
+              <ion-select-option name="type_dni" value="E">Extranjero/a</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-col>
@@ -59,7 +60,7 @@
         <ion-col size="6" > <!-- input del Estado para la direccion (cliente, courier o proveedor)-->
           <ion-item>
             <ion-label position="floating">Estado</ion-label>
-            <ion-select name="states_id" required [(ngModel)]="registerUser.states_id" okText="Aceptar" cancelText="Cancelar">
+            <ion-select name="states_id" required [(ngModel)]="registerUser.states_id" okText="Aceptar" cancelText="Cancelar" interface="action-sheet" [interfaceOptions]="customActionSheetOptions">
               <ion-select-option *ngFor="let address of address.estado" value="{{address.id}}">{{address.name}}</ion-select-option>
 
             </ion-select>
@@ -69,7 +70,7 @@
         <ion-col size="6" > <!-- input de la Ciduad para la direccion (cliente, courier o proveedor)-->
           <ion-item>
             <ion-label position="floating">Ciudad</ion-label>
-            <ion-select name="cities_id" required [(ngModel)]="registerUser.cities_id" okText="Aceptar" cancelText="Cancelar">
+            <ion-select name="cities_id" required [(ngModel)]="registerUser.cities_id" okText="Aceptar" cancelText="Cancelar" interface="action-sheet" [interfaceOptions]="customActionSheetOptions">
               <ion-select-option *ngFor="let address of address.ciudad" value="{{address.id}}" >{{address.name}}</ion-select-option>
 
             </ion-select>
@@ -79,7 +80,7 @@
         <ion-col size="6" > <!-- input del Municipio para la direccion (cliente, courier o proveedor)-->
           <ion-item>
             <ion-label position="floating">Municipio</ion-label>
-            <ion-select name="municipalities_id" required [(ngModel)]="registerUser.municipalities_id" okText="Aceptar" cancelText="Cancelar">
+            <ion-select name="municipalities_id" required [(ngModel)]="registerUser.municipalities_id" okText="Aceptar" cancelText="Cancelar" interface="action-sheet" [interfaceOptions]="customActionSheetOptions">
               <ion-select-option *ngFor="let address of address.municipio" value="{{address.id}}">{{address.name}}</ion-select-option>
             </ion-select>
           </ion-item>
@@ -88,7 +89,7 @@
         <ion-col size="6"> <!-- input de la parroquia para la direccion (cliente, courier o proveedor)-->
           <ion-item>
             <ion-label position="floating">Parroquia</ion-label>
-            <ion-select  name="parishes_id" required [(ngModel)]="registerUser.parishes_id" okText="Aceptar" cancelText="Cancelar">
+            <ion-select  name="parishes_id" required [(ngModel)]="registerUser.parishes_id" okText="Aceptar" cancelText="Cancelar" interface="action-sheet" [interfaceOptions]="customActionSheetOptions">
               <ion-select-option *ngFor="let address of address.parroquia" value="{{address.id}}">{{address.name}}</ion-select-option>
             </ion-select>
           </ion-item>

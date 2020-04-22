@@ -17,14 +17,14 @@ export class RestaurantListPage implements OnInit {
 
   ngOnInit() {
     this.getmethods.getProviders().subscribe(( resp: any ) => {
-      console.log(resp);
+      // console.log(resp);
       this.providers = resp;
     });
   }
 
   search( event ) {
     this.textSearch = event.detail.value;
-    console.log(this.textSearch);
+    // console.log(this.textSearch);
   }
 
   getFood(id: any) {

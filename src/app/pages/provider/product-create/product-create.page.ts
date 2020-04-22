@@ -37,10 +37,10 @@ export class ProductCreatePage implements OnInit {
     this.camera.getPicture(options).then((imageData) => {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64 (DATA_URL):
-     const img = window.Ionic.WebView.convertFileSrc( imageData );
-     console.log( img );
+    const img = window.Ionic.WebView.convertFileSrc( imageData );
+    console.log( img );
 
-     this.tempImages.push( img );
+    this.tempImages.push( img );
     }, (err) => {
      // Handle error
     });

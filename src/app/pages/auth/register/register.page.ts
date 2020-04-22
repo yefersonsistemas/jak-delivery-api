@@ -33,6 +33,10 @@ export class RegisterPage implements OnInit {
     password: '',
   };
 
+  customActionSheetOptions: any = {
+    header: 'Seleccionar una Opción',
+  };
+
   constructor(private auth: AuthService, private alert: AlertserviceService, private NavCtrl: NavController,
               private getmethods: GetmethodsService) { }
 
