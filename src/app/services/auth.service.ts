@@ -5,8 +5,8 @@ import { Storage } from '@ionic/storage';
 import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
-const Url = 'http://192.168.0.87/proyecto-a-api/public/api/';
-// const Url = 'http://127.0.0.1/proyecto-a-api/public/api/';
+// const Url = 'http://192.168.0.87/proyecto-a-api/public/api/';
+const Url = 'http://127.0.0.1/proyecto-a-api/public/api/';
 
 @Injectable({
   providedIn: 'root'
@@ -58,12 +58,12 @@ export class AuthService {
 
   }
 
-  updateProfile(profile: UserUpdate, id: string) {
-    const update = { profile, id};
-    return this.http.post( Url + 'auth/profile', update).pipe(map(resp => {
-      return resp;
-    }));
-  }
+  // updateProfile(profile: UserUpdate, id: string) {
+  //   const update = { profile, id};
+  //   return this.http.post( Url + 'auth/profile', update).pipe(map(resp => {
+  //     return resp;
+  //   }));
+  // }
 
   // metodo que limpia el storage despues del logout
   logout() {

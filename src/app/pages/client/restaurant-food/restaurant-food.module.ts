@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { RestaurantFoodPageRoutingModule } from './restaurant-food-routing.module';
 
 import { RestaurantFoodPage } from './restaurant-food.page';
+import { PipesModule } from '../../../pipes/pipes.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RestaurantFoodPageRoutingModule
+    RestaurantFoodPageRoutingModule,
+    PipesModule
   ],
   declarations: [RestaurantFoodPage]
 })
