@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FilterPipe implements PipeTransform {
 
   transform(array: any[], text: string, column: string): any[] {
-    console.log('array desde el pipe', array);
+    // console.log('array desde el pipe', array);
     // if ( text === '' || text === undefined) {
     //   return array;
     // }
@@ -22,6 +22,7 @@ export class FilterPipe implements PipeTransform {
 
     text = text.toLowerCase();
 
+    // tslint:disable-next-line: only-arrow-functions
     return array.filter( function( item: any ) {
       return JSON.stringify(item).toLowerCase().includes(text);
     });

@@ -4,7 +4,7 @@
 
         <ion-slide>
 
-            <img src="assets/logo3.svg">
+            <ion-img src="assets/logo3.svg"></ion-img>
 
             <form (ngSubmit)="register(fRegister)" #fRegister="ngForm">
                 <h2>Sign up</h2>
@@ -12,14 +12,14 @@
                 <ion-grid fixed>
 
                     <ion-row>
-                        <ion-col>
+                        <ion-col size="5">
                             <ion-item>
                                 <ion-label position="floating">Nombre</ion-label>
                                 <ion-input type="text" name="name" required [(ngModel)]="registerUser.name"></ion-input>
                             </ion-item>
                         </ion-col>
 
-                        <ion-col>
+                        <ion-col size="5">
                             <ion-item>
                                 <ion-label position="floating">Apellido</ion-label>
                                 <ion-input type="text" name="lastname" required [(ngModel)]="registerUser.lastname"></ion-input>
@@ -95,7 +95,7 @@
 
         <ion-slide>
 
-            <img src="assets/logo3.svg">
+            <ion-img src="assets/logo3.svg"></ion-img>
 
             <form (ngSubmit)="register(fRegister)" #fRegister="ngForm">
                 <h2>Sign up</h2>

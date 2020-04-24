@@ -1,48 +1,57 @@
 <ion-content>
-    <form (ngSubmit)="login(fLogin)" #fLogin="ngForm">
-        <ion-grid fixed>
-            <ion-row>
+  <form (ngSubmit)="login(fLogin)" #fLogin="ngForm">
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="12">
+          <ion-card class="no-shadow ion-text-center">
+            <img src="assets/logo3.svg" />
+            <ion-card-header class="">
+              <ion-card-title>Log in</ion-card-title>
+              <ion-card-subtitle>
+                <a href="">
+                  <ion-icon size="large" name="logo-facebook"></ion-icon>
+                </a>
+                <a href="">
+                  <ion-icon size="large" name="logo-google"></ion-icon>
+                </a>
 
-                <ion-col size="12">
-
-                    <ion-card class="no-shadow ion-text-center">
-                        <img src="assets/logo3.svg">
-                        <ion-card-header class="">
-                            <ion-card-title>Log in</ion-card-title>
-                            <ion-card-subtitle>
-                                <a href="">
-                                    <ion-icon size="large" name="logo-facebook"></ion-icon>
-                                </a>
-                                <a href="">
-                                    <ion-icon size="large" name="logo-google"></ion-icon>
-                                </a>
-
-                                <p>Inicia sesión con tus redes sociales</p>
-                            </ion-card-subtitle>
-                        </ion-card-header>
-                        <ion-card-content>
-                            <ion-col size="12">
-                                <ion-item>
-                                    <ion-label position="floating">Correo Electronico</ion-label>
-                                    <ion-input type="email" name="email" [(ngModel)]="loginUser.email" [pattern]="emailPattern" required></ion-input>
-                                </ion-item>
-                                <!-- <ion-col size="12">
+                <p>Inicia sesión con tus redes sociales</p>
+              </ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-col size="12">
+                <ion-item>
+                  <ion-label position="floating">Correo Electronico</ion-label>
+                  <ion-input
+                    type="email"
+                    name="email"
+                    [(ngModel)]="loginUser.email"
+                    [pattern]="emailPattern"
+                    required
+                  ></ion-input>
+                </ion-item>
+                <!-- <ion-col size="12">
                   <mat-form-field appearance="outline"> -->
-                                <!-- <mat-label>Outline form field</mat-label> -->
-                                <!-- <input matInput placeholder="Placeholder">
+                <!-- <mat-label>Outline form field</mat-label> -->
+                <!-- <input matInput placeholder="Placeholder">
         
                   </mat-form-field>
                 </ion-col> -->
-                            </ion-col>
+              </ion-col>
 
-                            <ion-col size="12">
-                                <ion-item>
-                                    <ion-label position="floating">Contraseña</ion-label>
-                                    <ion-input type="password" name="password" [(ngModel)]="loginUser.password" required></ion-input>
-                                </ion-item>
-                            </ion-col>
+              <ion-col size="12">
+                <ion-item>
+                  <ion-label position="floating">Contraseña</ion-label>
+                  <ion-input
+                    type="password"
+                    name="password"
+                    [(ngModel)]="loginUser.password"
+                    required
+                  ></ion-input>
+                </ion-item>
+              </ion-col>
 
-                            <!-- <ion-col size="6">
+              <!-- <ion-col size="6">
                                 <ion-button expand="block" shape="round" color="success" type="submit">
                                     Ingresar
                                 </ion-button>
@@ -53,28 +62,67 @@
                                     Registrarse
                                 </ion-button>
                             </ion-col> -->
-                        </ion-card-content>
-                    </ion-card>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
-                </ion-col>
-
-
-            </ion-row>
-        </ion-grid>
-
-        <!-- Ribbon Comienzo -->
-        <div class="">
-            <div class="">
-                <div class="ribbon1 ribbon">
-                    <div class="ribbon2 ribbon ion-text-start">
-                        <ion-button fill="clear" shape="round" type="submit">
-                            <ion-icon class="ion-icon2 " color="dark " size=" " src="assets/flecha1.svg "></ion-icon>
-                        </ion-button>
-                        <ion-button routerLink="/register" shape="round" size="small" color="light">Register</ion-button>
-                    </div>
-                </div>
-            </div>
+    <!-- Ribbon Comienzo -->
+<div class="">
+<div class="">
+    <div class="ribbon1 ribbon">
+        <div class="ribbon2 ribbon ion-text-start">
+            <ion-button class="ion-margin" fill="clear" shape="round" type="submit">
+                <ion-icon class="ion-icon2" color="dark " size=" " src="assets/flecha1.svg "></ion-icon>
+            </ion-button>
+            <ion-button class="ion-margin-bottom" routerLink="/register" shape="round" size="small" color="light">Register</ion-button>
         </div>
-        <!-- Ribbon Fin -->
-    </form>
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <div class="">
+      <div class="">
+        <div class="ribbon1 ribbon">
+          <div class="ribbon2 ribbon ion-text-center">
+            <ion-button class="ion-margin" fill="clear" shape="round" type="submit">
+              <ion-icon
+                class="ion-icon2"
+                color="dark "
+                size=" "
+                src="assets/flecha1.svg "
+              ></ion-icon>
+            </ion-button>
+            <ion-button
+              routerLink="/register"
+              shape="round"
+              size="small"
+              color="light"
+              >Register</ion-button
+            >
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <!-- Ribbon Fin -->
+  </form>
 </ion-content>

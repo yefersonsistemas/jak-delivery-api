@@ -58,6 +58,13 @@ export class AuthService {
 
   }
 
+  // updateProfile(profile: UserUpdate, id: string) {
+  //   const update = { profile, id};
+  //   return this.http.post( Url + 'auth/profile', update).pipe(map(resp => {
+  //     return resp;
+  //   }));
+  // }
+
   // metodo que limpia el storage despues del logout
   logout() {
     this.token = null;

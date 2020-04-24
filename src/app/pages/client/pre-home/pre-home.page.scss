@@ -2,10 +2,9 @@
     position: absolute;
 }
 
-$rib_color: #ED145B;
 $pg_thick: 2px;
 .ribbon1 {
-    background-color: $rib_color;
+    background: #ED145B;
     // border-left: 1px solid darken($rib_color, 10%);
     // border-right: 1px solid darken($rib_color, 10%);
     position: absolute;
@@ -16,31 +15,31 @@ $pg_thick: 2px;
     z-index: 1;
 }
 
-.ribbon1:before,
-.ribbon1:after {
-    content: '';
-    position: absolute;
-    right: 100%;
-    /* I use this instead of right: 0 to avoid 1px rounding errors */
-    margin-right: -9px;
-    /* I use this because I am using left: 100% */
-    width: 9px;
-    height: 9px;
-    border-left: 9px solid #ED145B;
-    z-index: -1;
-}
+// .ribbon1:before,
+// .ribbon1:after {
+//     content: '';
+//     position: absolute;
+//     right: 100%;
+//     /* I use this instead of right: 0 to avoid 1px rounding errors */
+//     margin-right: -9px;
+//     /* I use this because I am using left: 100% */
+//     width: 9px;
+//     height: 9px;
+//     border-left: 9px solid #ED145B;
+//     z-index: -1;
+// }
 
-.ribbon1:before {
-    top: -9px;
-    border-bottom: 9px solid #ED145B;
-    border-bottom-left-radius: 18px;
-}
+// .ribbon1:before {
+//     top: -9px;
+//     border-bottom: 9px solid #ED145B;
+//     border-bottom-left-radius: 18px;
+// }
 
-.ribbon1:after {
-    bottom: -9px;
-    border-top: 9px solid #ED145B;
-    border-top-left-radius: 18px;
-}
+// .ribbon1:after {
+//     bottom: -9px;
+//     border-top: 9px solid #ED145B;
+//     border-top-left-radius: 18px;
+// }
 
 .ribbon2 {
     border-radius: 50px 0 0 50px;
@@ -48,7 +47,7 @@ $pg_thick: 2px;
     height: 60px;
     background: #ED145B;
     bottom: 50px;
-    right: 24px;
+    right: 23px;
     z-index: 1;
 }
 

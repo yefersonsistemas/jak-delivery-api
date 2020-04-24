@@ -33,7 +33,7 @@ const routes: Routes = [
     // canLoad: [UsersGuard]
   },
   {
-    path: 'create-order/:id',
+    path: 'create-order/:id/:type/:providerid',
     loadChildren: () => import('./pages/client/create-order/create-order.module').then( m => m.CreateOrderPageModule),
   // canLoad: [UsersGuard]
   },

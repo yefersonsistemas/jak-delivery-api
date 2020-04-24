@@ -1,479 +1,599 @@
 <ion-header class="ion-no-border" [translucent]="true">
-    <ion-toolbar color="primary">
-        <ion-buttons slot="start">
-            <ion-menu-button menu="primerMenu"></ion-menu-button>
-        </ion-buttons>
-        <ion-buttons slot="primary">
-            <ion-back-button defaultHref="/restaurant-list" text="Inicio"></ion-back-button>
-        </ion-buttons>
-    </ion-toolbar>
-    <!-- <ion-searchbar animated (ionChange)="search($event)"></ion-searchbar> -->
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="primerMenu"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-back-button
+        defaultHref="/restaurant-list"
+        text="Inicio"
+      ></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-searchbar
+    color="primary"
+    animated
+    (ionChange)="search($event)"
+  ></ion-searchbar>
 </ion-header>
 
 <ion-content>
-    <ion-grid fixed>
-        <ion-row>
-            <ion-col size="12">
-                <ion-card *ngFor="let arabian of foodArabian">
-                    <ion-grid fixed>
-                        <ion-row>
-                            <ion-col size="12">
-                                <!-- <ion-img src="{{ arabian.image.path }}"></ion-img> -->
-                            </ion-col>
-                            <ion-col size="12">
-                                <ion-card-title>
-                                    {{ arabian.name }}
-                                </ion-card-title>
-                            </ion-col>
-                            <ion-col size="6">
-                                <ion-card-subtitle>
-                                    BS.{{ arabian.price_bs }}/USD.{{ arabian.price_us }}
-                                </ion-card-subtitle>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-card>
+  <ion-grid fixed>
+    <ion-row>
+        <ion-col size="12">
+            <ion-card class="infoCard">
+                <ion-grid fixed>
+                    <ion-row>
+                        <ion-col size="12">
+                            <!-- <ion-img src="{{ arabian.image.path }}"></ion-img> -->
+                        </ion-col>
+                        <ion-col size="12">
+                            <ion-card-title color="light">
+                                {{ infoProvider.person?.name }}
+                            </ion-card-title>
+                        </ion-col>
+                        <ion-col size="12">
+                            <ion-card-subtitle color="light" class="ion-float-right">
+                                <ion-icon name="bicycle" size="large"></ion-icon><br /> BS.{{ infoProvider.price_delivery }}
+                            </ion-card-subtitle>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-card>
+        </ion-col>
+      <ion-col size="12">
+        <ion-card
+          *ngFor="let arabian of foodArabian | filter: textSearch:''"
+          (click)="arabianOrder(arabian.id)"
+        >
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12">
+                <!-- <ion-img src="{{ arabian.image.path }}"></ion-img> -->
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-title>
+                  {{ arabian.name }}
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>
+                  BS.{{ arabian.price_bs }}/USD.{{ arabian.price_us }}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
 
-                <ion-card *ngFor="let bakery of foodBakery">
-                    <ion-grid fixed>
-                        <ion-row>
-                            <ion-col size="12">
-                                <!-- <ion-img src="{{ bakery.image.path }}"></ion-img> -->
-                            </ion-col>
-                            <ion-col size="12">
-                                <ion-card-title>
-                                    {{ bakery.name }}
-                                </ion-card-title>
-                            </ion-col>
-                            <ion-col size="6">
-                                <ion-card-subtitle>
-                                    BS.{{ bakery.price_bs }}/USD.{{ bakery.price_us }}
-                                </ion-card-subtitle>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-card>
+        <ion-card
+          *ngFor="let bakery of foodBakery | filter: textSearch:''"
+          (click)="bakeryOrder(bakery.id)"
+        >
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12">
+                <!-- <ion-img src="{{ bakery.image.path }}"></ion-img> -->
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-title>
+                  {{ bakery.name }}
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>
+                  BS.{{ bakery.price_bs }}/USD.{{ bakery.price_us }}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
 
-                <ion-card *ngFor="let burguer of foodBurguer">
-                    <ion-grid fixed>
-                        <ion-row>
-                            <ion-col size="12">
-                                <!-- <ion-img src="{{ burguer.image.path }}"></ion-img> -->
-                            </ion-col>
-                            <ion-col size="12">
-                                <ion-card-title>
-                                    {{ burguer.name }}
-                                </ion-card-title>
-                            </ion-col>
-                            <ion-col size="6">
-                                <ion-card-subtitle>
-                                    BS.{{ burguer.price_bs }}/USD.{{ burguer.price_us }}
-                                </ion-card-subtitle>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-card>
+        <ion-card
+          *ngFor="let burguer of foodBurguer | filter: textSearch:''"
+          (click)="burguerOrder(burguer.id)"
+        >
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12">
+                <!-- <ion-img src="{{ burguer.image.path }}"></ion-img> -->
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-title>
+                  {{ burguer.name }}
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>
+                  BS.{{ burguer.price_bs }}/USD.{{ burguer.price_us }}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
 
-                <ion-card *ngFor="let chicken of foodChicken">
-                    <ion-grid fixed>
-                        <ion-row>
-                            <ion-col size="12">
-                                <!-- <ion-img src="{{ chicken.image.path }}"></ion-img> -->
-                            </ion-col>
-                            <ion-col size="12">
-                                <ion-card-title>
-                                    {{ chicken.name }}
-                                </ion-card-title>
-                            </ion-col>
-                            <ion-col size="6">
-                                <ion-card-subtitle>
-                                    BS.{{ chicken.price_bs }}/USD.{{ chicken.price_us }}
-                                </ion-card-subtitle>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-card>
+        <ion-card
+          *ngFor="let chicken of foodChicken | filter: textSearch:''"
+          (click)="chickenOrder(chicken.id)"
+        >
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12">
+                <!-- <ion-img src="{{ chicken.image.path }}"></ion-img> -->
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-title>
+                  {{ chicken.name }}
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>
+                  BS.{{ chicken.price_bs }}/USD.{{ chicken.price_us }}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
 
-                <ion-card *ngFor="let chinese of foodChinese">
-                    <ion-grid fixed>
-                        <ion-row>
-                            <ion-col size="12">
-                                <!-- <ion-img src="{{ chinese.image.path }}"></ion-img> -->
-                            </ion-col>
-                            <ion-col size="12">
-                                <ion-card-title>
-                                    {{ chinese.name }}
-                                </ion-card-title>
-                            </ion-col>
-                            <ion-col size="6">
-                                <ion-card-subtitle>
-                                    BS.{{ chinese.price_bs }}/USD.{{ chinese.price_us }}
-                                </ion-card-subtitle>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-card>
+        <ion-card
+          *ngFor="let chinese of foodChinese | filter: textSearch:''"
+          (click)="chineseOrder(chinese.id)"
+        >
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12">
+                <!-- <ion-img src="{{ chinese.image.path }}"></ion-img> -->
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-title>
+                  {{ chinese.name }}
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>
+                  BS.{{ chinese.price_bs }}/USD.{{ chinese.price_us }}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
 
-                <ion-card *ngFor="let indian of foodIndian">
-                    <ion-grid fixed>
-                        <ion-row>
-                            <ion-col size="12">
-                                <!-- <ion-img src="{{ indian.image.path }}"></ion-img> -->
-                            </ion-col>
-                            <ion-col size="12">
-                                <ion-card-title>
-                                    {{ indian.name }}
-                                </ion-card-title>
-                            </ion-col>
-                            <ion-col size="6">
-                                <ion-card-subtitle>
-                                    BS.{{ indian.price_bs }}/USD.{{ indian.price_us }}
-                                </ion-card-subtitle>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-card>
+        <ion-card
+          *ngFor="let indian of foodIndian | filter: textSearch:''"
+          (click)="indianOrder(indian.id)"
+        >
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12">
+                <!-- <ion-img src="{{ indian.image.path }}"></ion-img> -->
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-title>
+                  {{ indian.name }}
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>
+                  BS.{{ indian.price_bs }}/USD.{{ indian.price_us }}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
 
-                <ion-card *ngFor="let italian of foodItalian">
-                    <ion-grid fixed>
-                        <ion-row>
-                            <ion-col size="12">
-                                <!-- <ion-img src="{{ italian.image.path }}"></ion-img> -->
-                            </ion-col>
-                            <ion-col size="12">
-                                <ion-card-title>
-                                    {{ italian.name }}
-                                </ion-card-title>
-                            </ion-col>
-                            <ion-col size="6">
-                                <ion-card-subtitle>
-                                    BS.{{ italian.price_bs }}/USD.{{ italian.price_us }}
-                                </ion-card-subtitle>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-card>
+        <ion-card
+          *ngFor="let italian of foodItalian | filter: textSearch:''"
+          (click)="italianOrder(italian.id)"
+        >
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12">
+                <!-- <ion-img src="{{ italian.image.path }}"></ion-img> -->
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-title>
+                  {{ italian.name }}
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>
+                  BS.{{ italian.price_bs }}/USD.{{ italian.price_us }}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
 
-                <ion-card *ngFor="let japanese of foodJapanese">
-                    <ion-grid fixed>
-                        <ion-row>
-                            <ion-col size="12">
-                                <!-- <ion-img src="{{ japanese.image.path }}"></ion-img> -->
-                            </ion-col>
-                            <ion-col size="12">
-                                <ion-card-title>
-                                    {{ japanese.name }}
-                                </ion-card-title>
-                            </ion-col>
-                            <ion-col size="6">
-                                <ion-card-subtitle>
-                                    BS.{{ japanese.price_bs }}/USD.{{ japanese.price_us }}
-                                </ion-card-subtitle>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-card>
+        <ion-card
+          *ngFor="let japanese of foodJapanese | filter: textSearch:''"
+          (click)="japaneseOrder(japanese.id)"
+        >
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12">
+                <!-- <ion-img src="{{ japanese.image.path }}"></ion-img> -->
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-title>
+                  {{ japanese.name }}
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>
+                  BS.{{ japanese.price_bs }}/USD.{{ japanese.price_us }}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
 
-                <ion-card *ngFor="let korean of foodKorean">
-                    <ion-grid fixed>
-                        <ion-row>
-                            <ion-col size="12">
-                                <ion-img src="{{ korean.image.path }}"></ion-img>
-                            </ion-col>
-                            <ion-col size="12">
-                                <ion-card-title>
-                                    <!-- {{ korean.name }} -->
-                                </ion-card-title>
-                            </ion-col>
-                            <ion-col size="6">
-                                <ion-card-subtitle>
-                                    BS.{{ korean.price_bs }}/USD.{{ korean.price_us }}
-                                </ion-card-subtitle>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-card>
+        <ion-card
+          *ngFor="let korean of foodKorean | filter: textSearch:''"
+          (click)="koreanOrder(korean.id)"
+        >
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12">
+                <ion-img src="{{ korean.image.path }}"></ion-img>
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-title>
+                  <!-- {{ korean.name }} -->
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>
+                  BS.{{ korean.price_bs }}/USD.{{ korean.price_us }}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
 
-                <ion-card *ngFor="let lunch of foodLunch">
-                    <ion-grid fixed>
-                        <ion-row>
-                            <ion-col size="12">
-                                <!-- <ion-img src="{{ lunch.image.path }}"></ion-img> -->
-                            </ion-col>
-                            <ion-col size="12">
-                                <ion-card-title>
-                                    {{ lunch.name }}
-                                </ion-card-title>
-                            </ion-col>
-                            <ion-col size="6">
-                                <ion-card-subtitle>
-                                    BS.{{ lunch.price_bs }}/USD.{{ lunch.price_us }}
-                                </ion-card-subtitle>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-card>
+        <ion-card
+          *ngFor="let lunch of foodLunch | filter: textSearch:''"
+          (click)="lunchOrder(lunch.id)"
+        >
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12">
+                <!-- <ion-img src="{{ lunch.image.path }}"></ion-img> -->
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-title>
+                  {{ lunch.name }}
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>
+                  BS.{{ lunch.price_bs }}/USD.{{ lunch.price_us }}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
 
-                <ion-card *ngFor="let mexican of foodMexican">
-                    <ion-grid fixed>
-                        <ion-row>
-                            <ion-col size="12">
-                                <!-- <ion-img src="{{ mexican.image.path }}"></ion-img> -->
-                            </ion-col>
-                            <ion-col size="12">
-                                <ion-card-title>
-                                    {{ mexican.name }}
-                                </ion-card-title>
-                            </ion-col>
-                            <ion-col size="6">
-                                <ion-card-subtitle>
-                                    BS.{{ mexican.price_bs }}/USD.{{ mexican.price_us }}
-                                </ion-card-subtitle>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-card>
+        <ion-card
+          *ngFor="let mexican of foodMexican | filter: textSearch:''"
+          (click)="mexicanOrder(mexican.id)"
+        >
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12">
+                <!-- <ion-img src="{{ mexican.image.path }}"></ion-img> -->
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-title>
+                  {{ mexican.name }}
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>
+                  BS.{{ mexican.price_bs }}/USD.{{ mexican.price_us }}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
 
-                <ion-card *ngFor="let pizza of foodPizza">
-                    <ion-grid fixed>
-                        <ion-row>
-                            <ion-col size="12">
-                                <!-- <ion-img src="{{ pizza.image.path }}"></ion-img> -->
-                            </ion-col>
-                            <ion-col size="12">
-                                <ion-card-title>
-                                    {{ pizza.name }}
-                                </ion-card-title>
-                            </ion-col>
-                            <ion-col size="6">
-                                <ion-card-subtitle>
-                                    BS.{{ pizza.price_bs }}/USD.{{ pizza.price_us }}
-                                </ion-card-subtitle>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-card>
+        <ion-card
+          *ngFor="let pizza of foodPizza | filter: textSearch:''"
+          (click)="pizzaOrder(pizza.id)"
+        >
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12">
+                <!-- <ion-img src="{{ pizza.image.path }}"></ion-img> -->
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-title>
+                  {{ pizza.name }}
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>
+                  BS.{{ pizza.price_bs }}/USD.{{ pizza.price_us }}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
 
-                <ion-card *ngFor="let salad of foodSalad">
-                    <ion-grid fixed>
-                        <ion-row>
-                            <ion-col size="12">
-                                <!-- <ion-img src="{{ salad.image.path }}"></ion-img> -->
-                            </ion-col>
-                            <ion-col size="12">
-                                <ion-card-title>
-                                    {{ salad.name }}
-                                </ion-card-title>
-                            </ion-col>
-                            <ion-col size="6">
-                                <ion-card-subtitle>
-                                    BS.{{ salad.price_bs }}/USD.{{ salad.price_us }}
-                                </ion-card-subtitle>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-card>
+        <ion-card
+          *ngFor="let salad of foodSalad | filter: textSearch:''"
+          (click)="saladOrder(salad.id)"
+        >
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12">
+                <!-- <ion-img src="{{ salad.image.path }}"></ion-img> -->
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-title>
+                  {{ salad.name }}
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>
+                  BS.{{ salad.price_bs }}/USD.{{ salad.price_us }}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
 
-                <ion-card *ngFor="let tradicinal of foodTradicional">
-                    <ion-grid fixed>
-                        <ion-row>
-                            <ion-col size="12">
-                                <!-- <ion-img src="{{ tradicinal.image.path }}"></ion-img> -->
-                            </ion-col>
-                            <ion-col size="12">
-                                <ion-card-title>
-                                    {{ tradicinal.name }}
-                                </ion-card-title>
-                            </ion-col>
-                            <ion-col size="6">
-                                <ion-card-subtitle>
-                                    BS.{{ tradicinal.price_bs }}/USD.{{ tradicinal.price_us }}
-                                </ion-card-subtitle>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-card>
+        <ion-card
+          *ngFor="let traditional of foodTradicional | filter: textSearch:''"
+          (click)="traditionalOrder(traditional.id)"
+        >
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12">
+                <!-- <ion-img src="{{ traditional.image.path }}"></ion-img> -->
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-title>
+                  {{ traditional.name }}
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>
+                  BS.{{ traditional.price_bs }}/USD.{{ traditional.price_us }}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
 
-                <ion-card *ngFor="let vegan of foodVegan">
-                    <ion-grid fixed>
-                        <ion-row>
-                            <ion-col size="12">
-                                <!-- <ion-img src="{{ vegan.image.path }}"></ion-img> -->
-                            </ion-col>
-                            <ion-col size="12">
-                                <ion-card-title>
-                                    {{ vegan.name }}
-                                </ion-card-title>
-                            </ion-col>
-                            <ion-col size="6">
-                                <ion-card-subtitle>
-                                    BS.{{ vegan.price_bs }}/USD.{{ vegan.price_us }}
-                                </ion-card-subtitle>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-card>
+        <ion-card
+          *ngFor="let vegan of foodVegan | filter: textSearch:''"
+          (click)="veganOrder(vegan.id)"
+        >
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12">
+                <!-- <ion-img src="{{ vegan.image.path }}"></ion-img> -->
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-title>
+                  {{ vegan.name }}
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>
+                  BS.{{ vegan.price_bs }}/USD.{{ vegan.price_us }}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
 
-                <ion-card *ngFor="let vegetarian of foodVegetarian">
-                    <ion-grid fixed>
-                        <ion-row>
-                            <ion-col size="12">
-                                <!-- <ion-img src="{{ vegetarian.image.path }}"></ion-img> -->
-                            </ion-col>
-                            <ion-col size="12">
-                                <ion-card-title>
-                                    {{ vegetarian.name }}
-                                </ion-card-title>
-                            </ion-col>
-                            <ion-col size="6">
-                                <ion-card-subtitle>
-                                    BS.{{ vegetarian.price_bs }}/USD.{{ vegetarian.price_us }}
-                                </ion-card-subtitle>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-card>
+        <ion-card
+          *ngFor="let vegetarian of foodVegetarian | filter: textSearch:''"
+          (click)="vegetarianOrder(vegetarian.id)"
+        >
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12">
+                <!-- <ion-img src="{{ vegetarian.image.path }}"></ion-img> -->
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-title>
+                  {{ vegetarian.name }}
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>
+                  BS.{{ vegetarian.price_bs }}/USD.{{ vegetarian.price_us }}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
 
-                <ion-card *ngFor="let delicatesse of delicatesse">
-                    <ion-grid fixed>
-                        <ion-row>
-                            <ion-col size="12">
-                                <!-- <ion-img src="{{ delicatesse.image.path }}"></ion-img> -->
-                            </ion-col>
-                            <ion-col size="12">
-                                <ion-card-title>
-                                    {{ delicatesse.name }}
-                                </ion-card-title>
-                            </ion-col>
-                            <ion-col size="6">
-                                <ion-card-subtitle>
-                                    BS.{{ delicatesse.price_bs }}/USD.{{ delicatesse.price_us }}
-                                </ion-card-subtitle>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-card>
+        <ion-card
+          *ngFor="let delicatesse of delicatesse | filter: textSearch:''"
+          (click)="delicatesseOrder(delicatesse.id)"
+        >
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12">
+                <!-- <ion-img src="{{ delicatesse.image.path }}"></ion-img> -->
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-title>
+                  {{ delicatesse.name }}
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>
+                  BS.{{ delicatesse.price_bs }}/USD.{{ delicatesse.price_us }}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
 
-                <ion-card *ngFor="let drink of drinks">
-                    <ion-grid fixed>
-                        <ion-row>
-                            <ion-col size="12">
-                                <!-- <ion-img src="{{ drink.image.path }}"></ion-img> -->
-                            </ion-col>
-                            <ion-col size="12">
-                                <ion-card-title>
-                                    {{ drink.name }}
-                                </ion-card-title>
-                            </ion-col>
-                            <ion-col size="6">
-                                <ion-card-subtitle>
-                                    BS.{{ drink.price_bs }}/USD.{{ drink.price_us }}
-                                </ion-card-subtitle>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-card>
+        <ion-card
+          *ngFor="let drink of drinks | filter: textSearch:''"
+          (click)="drinkOrder(drink.id)"
+        >
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12">
+                <!-- <ion-img src="{{ drink.image.path }}"></ion-img> -->
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-title>
+                  {{ drink.name }}
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>
+                  BS.{{ drink.price_bs }}/USD.{{ drink.price_us }}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
 
-                <ion-card *ngFor="let fridge of fridge">
-                    <ion-grid fixed>
-                        <ion-row>
-                            <ion-col size="12">
-                                <!-- <ion-img src="{{ fridge.image.path }}"></ion-img> -->
-                            </ion-col>
-                            <ion-col size="12">
-                                <ion-card-title>
-                                    {{ fridge.name }}
-                                </ion-card-title>
-                            </ion-col>
-                            <ion-col size="6">
-                                <ion-card-subtitle>
-                                    BS.{{ fridge.price_bs }}/USD.{{ fridge.price_us }}
-                                </ion-card-subtitle>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-card>
+        <ion-card
+          *ngFor="let extras of extras | filter: textSearch:''"
+          (click)="extrasOrder(extras.id)"
+        >
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12">
+                <!-- <ion-img src="{{ drink.image.path }}"></ion-img> -->
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-title>
+                  {{ extras.name }}
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>
+                  BS.{{ extras.price_bs }}/USD.{{ extras.price_us }}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
 
-                <ion-card *ngFor="let fruit of fruit">
-                    <ion-grid fixed>
-                        <ion-row>
-                            <ion-col size="12">
-                                <!-- <ion-img src="{{ fruit.image.path }}"></ion-img> -->
-                            </ion-col>
-                            <ion-col size="12">
-                                <ion-card-title>
-                                    {{ fruit.name }}
-                                </ion-card-title>
-                            </ion-col>
-                            <ion-col size="6">
-                                <ion-card-subtitle>
-                                    BS.{{ fruit.price_bs }}/USD.{{ fruit.price_us }}
-                                </ion-card-subtitle>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-card>
+        <ion-card
+          *ngFor="let fridge of fridge | filter: textSearch:''"
+          (click)="fridgeOrder(fridge.id)"
+        >
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12">
+                <!-- <ion-img src="{{ fridge.image.path }}"></ion-img> -->
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-title>
+                  {{ fridge.name }}
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>
+                  BS.{{ fridge.price_bs }}/USD.{{ fridge.price_us }}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
 
-                <ion-card *ngFor="let greengrocer of greengrocer">
-                    <ion-grid fixed>
-                        <ion-row>
-                            <ion-col size="12">
-                                <!-- <ion-img src="{{ greengrocer.image.path }}"></ion-img> -->
-                            </ion-col>
-                            <ion-col size="12">
-                                <ion-card-title>
-                                    {{ greengrocer.name }}
-                                </ion-card-title>
-                            </ion-col>
-                            <ion-col size="6">
-                                <ion-card-subtitle>
-                                    BS.{{ greengrocer.price_bs }}/USD.{{ greengrocer.price_us }}
-                                </ion-card-subtitle>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-card>
+        <ion-card
+          *ngFor="let fruit of fruit | filter: textSearch:''"
+          (click)="fruitOrder(fruit.id)"
+        >
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12">
+                <!-- <ion-img src="{{ fruit.image.path }}"></ion-img> -->
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-title>
+                  {{ fruit.name }}
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>
+                  BS.{{ fruit.price_bs }}/USD.{{ fruit.price_us }}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
 
-                <ion-card *ngFor="let liquor of liquor">
-                    <ion-grid fixed>
-                        <ion-row>
-                            <ion-col size="12">
-                                <!-- <ion-img src="{{ liquor.image.path }}"></ion-img> -->
-                            </ion-col>
-                            <ion-col size="12">
-                                <ion-card-title>
-                                    {{ liquor.name }}
-                                </ion-card-title>
-                            </ion-col>
-                            <ion-col size="6">
-                                <ion-card-subtitle>
-                                    BS.{{ liquor.price_bs }}/USD.{{ liquor.price_us }}
-                                </ion-card-subtitle>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-card>
+        <ion-card
+          *ngFor="let greengrocer of greengrocer | filter: textSearch:''"
+          (click)="greengrocerOrder(greengrocer.id)"
+        >
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12">
+                <!-- <ion-img src="{{ greengrocer.image.path }}"></ion-img> -->
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-title>
+                  {{ greengrocer.name }}
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>
+                  BS.{{ greengrocer.price_bs }}/USD.{{ greengrocer.price_us }}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
 
-                <ion-card *ngFor="let victual of victual">
-                    <ion-grid fixed>
-                        <ion-row>
-                            <ion-col size="12">
-                                <!-- <ion-img src="{{ victual.image.path }}"></ion-img> -->
-                            </ion-col>
-                            <ion-col size="12">
-                                <ion-card-title>
-                                    {{ victual.name }}
-                                </ion-card-title>
-                            </ion-col>
-                            <ion-col size="6">
-                                <ion-card-subtitle>
-                                    BS.{{ victual.price_bs }}/USD.{{ victual.price_us }}
-                                </ion-card-subtitle>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-card>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+        <ion-card
+          *ngFor="let liquor of liquor | filter: textSearch:''"
+          (click)="liquorOrder(liquor.id)"
+        >
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12">
+                <!-- <ion-img src="{{ liquor.image.path }}"></ion-img> -->
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-title>
+                  {{ liquor.name }}
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>
+                  BS.{{ liquor.price_bs }}/USD.{{ liquor.price_us }}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+
+        <ion-card
+          *ngFor="let victual of victual | filter: textSearch:''"
+          (click)="victualOrder(victual.id)"
+        >
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12">
+                <!-- <ion-img src="{{ victual.image.path }}"></ion-img> -->
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-title>
+                  {{ victual.name }}
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>
+                  BS.{{ victual.price_bs }}/USD.{{ victual.price_us }}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
