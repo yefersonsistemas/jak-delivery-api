@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FoodService } from '../../../services/food.service';
+import { CartshoppingService } from '../../../services/cartshopping.service';
 
 @Component({
   selector: 'app-create-order',
@@ -16,7 +17,7 @@ export class CreateOrderPage implements OnInit {
   extras: any = [];
   drinks: any = [];
 
-  constructor( private acroute: ActivatedRoute, private food: FoodService) { }
+  constructor( private acroute: ActivatedRoute, private food: FoodService, private shopping: CartshoppingService) { }
 
   ngOnInit() {
     // obteniendo los valores que se envian en la ruta
@@ -44,5 +45,15 @@ export class CreateOrderPage implements OnInit {
   onClick(id: any) {
     console.log(id);
   }
+
+  // decreaseCartItem(id: string) {
+  //   this.shopping.decreaseProduct(id);
+  // }
+
+  // increaseCartItem(id: string) {
+  //   this.shopping.addProduct(id);
+  // }
+
+
 
 }

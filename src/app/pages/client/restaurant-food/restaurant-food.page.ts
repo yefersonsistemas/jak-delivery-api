@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FoodService } from '../../../services/food.service';
+import { CartshoppingService } from '../../../services/cartshopping.service';
 
 // const path = 'http://192.168.0.87/proyecto-a-api/public/api/';
 
@@ -42,7 +43,7 @@ export class RestaurantFoodPage implements OnInit {
   type: any;
   id: any;
 
-  constructor(private acroute: ActivatedRoute, private food: FoodService, private router: Router) {
+  constructor(private acroute: ActivatedRoute, private food: FoodService, private router: Router, private shopping: CartshoppingService) {
   }
 
   ngOnInit() {
@@ -75,7 +76,7 @@ export class RestaurantFoodPage implements OnInit {
 
       if (resp.chinese != null) {
         this.foodChinese = resp.chinese;
-        // console.log('comida china', this.foodChinese);
+        console.log('comida china', this.foodChinese);
       }
 
       if (resp.indian != null) {
@@ -184,6 +185,7 @@ export class RestaurantFoodPage implements OnInit {
     type = 'arabian';
     providerid = this.id;
     this.router.navigate(['/create-order', id, type, providerid]);
+    // this.shopping.addProduct(id);
   }
 
   bakeryOrder(id: string, type: any, providerid: string) {
