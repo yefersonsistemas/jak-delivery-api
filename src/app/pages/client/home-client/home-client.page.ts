@@ -22,19 +22,19 @@ export class HomeClientPage implements OnInit {
   constructor( private getmethods: GetmethodsService, private navCtrl: NavController) { }
 
   ngOnInit() {
-    this.getmethods.getProviders().subscribe(( resp: any ) => {
-      console.log(resp);
-      this.providers = resp;
-    });
+    // this.getmethods.getProviders().subscribe(( resp: any ) => {
+    //   console.log(resp);
+    //   this.providers = resp;
+    // });
   }
 
   goRestaurant() {
     this.navCtrl.navigateRoot('restaurant-list', {animated : true});
   }
 
-  search( event ) {
-    this.textSearch = event.detail.value;
-    console.log(this.textSearch);
-  }
+  // search( event ) {
+  //   this.textSearch = event.detail.value;
+  //   console.log(this.textSearch);
+  // }
 
 }

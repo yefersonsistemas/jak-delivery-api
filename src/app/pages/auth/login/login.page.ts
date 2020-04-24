@@ -45,17 +45,13 @@ export class LoginPage implements OnInit {
 
     Swal.showLoading();
 
-
-    console.log(fLogin.valid);
-    console.log(this.loginUser);
-
     // comunicacion con el servio de auth para el login
     this.auth.login(this.loginUser.email, this.loginUser.password).subscribe( resp => {
-      console.log(resp);
+      // console.log(resp);
       Swal.close();
       this.NavCtrl.navigateRoot('/home-client', { animated : true });
     }, (error) => {
-      console.log('este es el error', error.error);
+      // console.log('este es el error', error.error);
       if (error.error.person) {
         Swal.fire({
           icon: 'error',

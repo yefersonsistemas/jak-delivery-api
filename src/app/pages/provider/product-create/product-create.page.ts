@@ -6,9 +6,9 @@ import { Router } from '@angular/router';
 declare var window: any;
 
 @Component({
-  selector: "app-product-create",
-  templateUrl: "./product-create.page.html",
-  styleUrls: ["./product-create.page.scss"],
+  selector: 'app-product-create',
+  templateUrl: './product-create.page.html',
+  styleUrls: ['./product-create.page.scss'],
 })
 export class ProductCreatePage implements OnInit {
   form: FormGroup;

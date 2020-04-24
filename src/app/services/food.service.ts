@@ -15,6 +15,26 @@ export class FoodService {
     const provid = {
       id
     };
-    return this.http.post(Url + 'auth/orders/food', provid);
+    return this.http.post( Url + 'auth/orders/food', provid );
   }
+
+  getFoodInOrder(id: string, type: string, provider_id: string) {
+    const data = {
+      id, type, provider_id
+    };
+    return this.http.post( Url + 'auth/orders/search', data );
+  }
+
+  getExtras(id: string) {
+    const ids = { id };
+
+    return this.http.post( Url + 'auth/foodE/extra', ids);
+  }
+
+  getDrinks(id: string) {
+    const ids = { id };
+
+    return this.http.post( Url + 'auth/foodD/drink', ids);
+  }
+
 }
