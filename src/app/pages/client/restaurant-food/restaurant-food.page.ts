@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FoodService } from '../../../services/food.service';
 import { CartshoppingService } from '../../../services/cartshopping.service';
+import { BehaviorSubject } from 'rxjs';
 
 // const path = 'http://192.168.0.87/proyecto-a-api/public/api/';
 
@@ -43,6 +44,9 @@ export class RestaurantFoodPage implements OnInit {
   type: any;
   id: any;
 
+  cart = [];
+  cartItemCount: BehaviorSubject<number>;
+
   constructor(private acroute: ActivatedRoute, private food: FoodService, private router: Router, private shopping: CartshoppingService) {
   }
 
@@ -50,6 +54,9 @@ export class RestaurantFoodPage implements OnInit {
     this.acroute.params.subscribe(params => {
       // console.log(params);
       this.id = params.id;
+
+      this.cart = this.shopping.getCart();
+      this.cartItemCount = this.shopping.getCartItemCount();
     });
     this.food.getFood(this.id).subscribe((resp: any) => {
       // console.log(resp);

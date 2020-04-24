@@ -12,6 +12,7 @@ export class CreateOrderPage implements OnInit {
   path = 'http://192.168.0.87/proyecto-a-api/storage/app/public/';
   id: any;
   type: any;
+  // tslint:disable-next-line: variable-name
   provider_id: any;
   foodInfo: any = {};
   extras: any = [];
