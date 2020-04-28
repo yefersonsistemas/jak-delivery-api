@@ -195,144 +195,144 @@ export class RestaurantFoodPage implements OnInit {
   arabianOrder(id: string, type: any, providerid: string) {
     type = 'arabian';
     providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+    this.router.navigate(['/add-shoppingcart', id, type, providerid]);
     // this.shopping.addProduct(id);
   }
 
   bakeryOrder(id: string, type: any, providerid: string) {
     type = 'bakery';
     providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+    this.router.navigate(['/add-shoppingcart', id, type, providerid]);
   }
 
   burguerOrder(id: string, type: any, providerid: string) {
     type = 'burguer';
     providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+    this.router.navigate(['/add-shoppingcart', id, type, providerid]);
   }
 
   chickenOrder(id: string, type: any, providerid: string) {
     type = 'chicken';
     providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+    this.router.navigate(['/add-shoppingcart', id, type, providerid]);
   }
 
   chineseOrder(id: string, type: any, providerid: string) {
     type = 'chinese';
     providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+    this.router.navigate(['/add-shoppingcart', id, type, providerid]);
   }
 
   indianOrder(id: string, type: any, providerid: string) {
     type = 'indian';
     providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+    this.router.navigate(['/add-shoppingcart', id, type, providerid]);
   }
 
   italianOrder(id: string, type: any, providerid: string) {
     type = 'italian';
     providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+    this.router.navigate(['/add-shoppingcart', id, type, providerid]);
   }
 
   japaneseOrder(id: string, type: any, providerid: string) {
     type = 'japanese';
     providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+    this.router.navigate(['/add-shoppingcart', id, type, providerid]);
   }
 
   koreanOrder(id: string, type: any, providerid: string) {
     type = 'korean';
     providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+    this.router.navigate(['/add-shoppingcart', id, type, providerid]);
   }
 
   lunchOrder(id: string, type: any, providerid: string) {
     type = 'lunch';
     providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+    this.router.navigate(['/add-shoppingcart', id, type, providerid]);
   }
 
   mexicanOrder(id: string, type: any, providerid: string) {
     type = 'mexican';
     providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+    this.router.navigate(['/add-shoppingcart', id, type, providerid]);
   }
 
   pizzaOrder(id: string, type: any, providerid: string) {
     type = 'pizza';
     providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+    this.router.navigate(['/add-shoppingcart', id, type, providerid]);
   }
 
   saladOrder(id: string, type: any, providerid: string) {
     type = 'salad';
     providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+    this.router.navigate(['/add-shoppingcart', id, type, providerid]);
   }
 
   traditionalOrder(id: string, type: any, providerid: string) {
     type = 'traditional';
     providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+    this.router.navigate(['/add-shoppingcart', id, type, providerid]);
   }
 
   veganOrder(id: string, type: any, providerid: string) {
     type = 'vegan';
     providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+    this.router.navigate(['/add-shoppingcart', id, type, providerid]);
   }
 
   vegetarianOrder(id: string, type: any, providerid: string) {
     type = 'vegetarian';
     providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+    this.router.navigate(['/add-shoppingcart', id, type, providerid]);
   }
 
   delicatesseOrder(id: string, type: any, providerid: string) {
     type = 'delicatesse';
     providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+    this.router.navigate(['/add-shoppingcart', id, type, providerid]);
   }
 
   drinkOrder(id: string, type: any, providerid: string) {
     type = 'drink';
     providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+    this.router.navigate(['/add-shoppingcart', id, type, providerid]);
   }
 
   extrasOrder(id: string, type: any, providerid: string) {
     type = 'extra';
     providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+    this.router.navigate(['/add-shoppingcart', id, type, providerid]);
   }
   fridgeOrder(id: string, type: any, providerid: string) {
     type = 'fridge';
     providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+    this.router.navigate(['/add-shoppingcart', id, type, providerid]);
   }
 
   fruitOrder(id: string, type: any, providerid: string) {
     type = 'fruit';
     providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+    this.router.navigate(['/add-shoppingcart', id, type, providerid]);
   }
 
   greengrocerOrder(id: string, type: any, providerid: string) {
     type = 'greengrocer';
     providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+    this.router.navigate(['/add-shoppingcart', id, type, providerid]);
   }
 
   liquorOrder(id: string, type: any, providerid: string) {
     type = 'liquor';
     providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+    this.router.navigate(['/add-shoppingcart', id, type, providerid]);
   }
 
   victualOrder(id: string, type: any, providerid: string) {
     type = 'victual';
     providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+    this.router.navigate(['/add-shoppingcart', id, type, providerid]);
   }
 }

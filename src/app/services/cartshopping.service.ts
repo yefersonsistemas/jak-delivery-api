@@ -7,16 +7,21 @@ import { BehaviorSubject } from 'rxjs';
 export class CartshoppingService {
 
   private shoppingCart = [];
-  private cartItemCount = new BehaviorSubject(0);
+  // private cartItemCount = new BehaviorSubject(0);
 
   constructor() { }
 
   getCart() {
     return this.shoppingCart;
+    console.log(this.shoppingCart);
   }
 
-  getCartItemCount() {
-    return this.cartItemCount;
+  // getCartItemCount() {
+  //   return this.cartItemCount;
+  // }
+
+  addProduct(id) {
+    this.shoppingCart.push(id);
   }
 
   // addProduct(product) {

@@ -10,6 +10,12 @@ import { NavController } from '@ionic/angular';
 })
 export class HomeClientPage implements OnInit {
 
+  sliderConfig = {
+    slidesPerView: 1.6,
+    spaceBetween: 10,
+    centeredSlides: true
+  };
+
   providers: any[] = [];
   textSearch = '';
   categories = [

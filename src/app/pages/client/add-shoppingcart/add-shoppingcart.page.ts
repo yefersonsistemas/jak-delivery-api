@@ -4,11 +4,11 @@ import { FoodService } from '../../../services/food.service';
 import { CartshoppingService } from '../../../services/cartshopping.service';
 
 @Component({
-  selector: 'app-create-order',
-  templateUrl: './create-order.page.html',
-  styleUrls: ['./create-order.page.scss'],
+  selector: 'app-add-shoppingcart',
+  templateUrl: './add-shoppingcart.page.html',
+  styleUrls: ['./add-shoppingcart.page.scss'],
 })
-export class CreateOrderPage implements OnInit {
+export class AddShoppingcartPage implements OnInit {
   path = 'http://192.168.0.87/proyecto-a-api/storage/app/public/';
   id: any;
   type: any;
@@ -16,12 +16,13 @@ export class CreateOrderPage implements OnInit {
   foodInfo: any = {};
   extras: any = [];
   drinks: any = [];
+  shoppingCart: any = [];
 
   constructor(
     private acroute: ActivatedRoute,
     private food: FoodService,
     private shopping: CartshoppingService
-  ) {}
+  ) { }
 
   ngOnInit() {
     // obteniendo los valores que se envian en la ruta
@@ -46,10 +47,14 @@ export class CreateOrderPage implements OnInit {
       console.log('bebidas', resp);
       this.drinks = resp;
     });
+
+    this.shoppingCart = this.shopping.getCart();
+    console.log('carrito', this.shoppingCart);
   }
 
-  onClick(id: any) {
-    console.log(id);
+  onClick(food) {
+    this.shopping.addProduct(food);
+    console.log(food);
   }
 
   // decreaseCartItem(id: string) {

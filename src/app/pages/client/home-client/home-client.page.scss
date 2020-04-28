@@ -1,5 +1,8 @@
 ion-card{
     --background: url('/assets/comida.jpg') no-repeat;
+    height: 160px;
+    width: 160px;
+    border-radius: 25px;
 }
 
 ion-card-title{
@@ -13,4 +16,17 @@ ion-card-subtitle{
 
 ion-icon{
     margin-left: 15px;
+}
+
+ion-img {
+  width: 120px;
+  margin: auto;
+  display: block;
+}
+
+section{
+    background-color: #ED145B;
+    padding-top: 50px;
+    border-radius: 0 0 0 25px;
+    padding-bottom: 250px;
 }
