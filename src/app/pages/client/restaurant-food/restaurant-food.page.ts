@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FoodService } from '../../../services/food.service';
+import { ProvidersService } from '../../../services/providers.service';
 import { CartshoppingService } from '../../../services/cartshopping.service';
-import { BehaviorSubject } from 'rxjs';
-
-// const path = 'http://192.168.0.87/proyecto-a-api/public/api/';
 
 @Component({
   selector: 'app-restaurant-food',
@@ -12,7 +10,6 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./restaurant-food.page.scss'],
 })
 export class RestaurantFoodPage implements OnInit {
-
   textSearch = '';
   path = 'http://192.168.0.87/proyecto-a-api/storage/app/public/';
   foodArabian: any[] = [];
@@ -40,28 +37,29 @@ export class RestaurantFoodPage implements OnInit {
   greengrocer: any[] = [];
   liquor: any[] = [];
   victual: any[] = [];
+  infoProvider: any = {};
 
   type: any;
   id: any;
 
-  cart = [];
-  cartItemCount: BehaviorSubject<number>;
-
-  constructor(private acroute: ActivatedRoute, private food: FoodService, private router: Router, private shopping: CartshoppingService) {
-  }
+  constructor(
+    private acroute: ActivatedRoute,
+    private food: FoodService,
+    private router: Router,
+    private provider: ProvidersService,
+    private shopping: CartshoppingService
+  ) {}
 
   ngOnInit() {
-    this.acroute.params.subscribe(params => {
+    this.acroute.params.subscribe((params) => {
       // console.log(params);
       this.id = params.id;
-
-      this.cart = this.shopping.getCart();
-      this.cartItemCount = this.shopping.getCartItemCount();
     });
     this.food.getFood(this.id).subscribe((resp: any) => {
       // console.log(resp);
 
-      if (resp.arabian != null) { // Para asignar el array de cimida arabe a la variable foodArabian y leerla en las cartas
+      if (resp.arabian != null) {
+        // Para asignar el array de cimida arabe a la variable foodArabian y leerla en las cartas
         this.foodArabian = resp.arabian;
         // console.log('comida arabe', this.foodArabian);
       }
@@ -181,154 +179,110 @@ export class RestaurantFoodPage implements OnInit {
         // console.log('viveres', this.victual);
       }
     });
+
+    this.provider.getProviderCardInfo(this.id).subscribe(resp => {
+      console.log(resp);
+      this.infoProvider = resp;
+    });
   }
 
-  search( event ) {
+  search(event) {
     this.textSearch = event.detail.value;
     console.log(this.textSearch);
   }
 
-  arabianOrder(id: string, type: any, providerid: string) {
-    type = 'arabian';
-    providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
-    // this.shopping.addProduct(id);
+  arabianOrder() {
+    this.router.navigate(['/create-order']);
   }
 
-  bakeryOrder(id: string, type: any, providerid: string) {
-    type = 'bakery';
-    providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+  bakeryOrder() {
+    this.router.navigate(['/create-order']);
   }
 
-  burguerOrder(id: string, type: any, providerid: string) {
-    type = 'burguer';
-    providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+  burguerOrder() {
+    this.router.navigate(['/create-order']);
   }
 
-  chickenOrder(id: string, type: any, providerid: string) {
-    type = 'chicken';
-    providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+  chickenOrder() {
+    this.router.navigate(['/create-order']);
   }
 
-  chineseOrder(id: string, type: any, providerid: string) {
-    type = 'chinese';
-    providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+  chineseOrder() {
+    this.router.navigate(['/create-order']);this.router.navigate(['/create-order']);
   }
 
-  indianOrder(id: string, type: any, providerid: string) {
-    type = 'indian';
-    providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+  indianOrder() {
+    this.router.navigate(['/create-order']);
   }
 
-  italianOrder(id: string, type: any, providerid: string) {
-    type = 'italian';
-    providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+  italianOrder() {
+    this.router.navigate(['/create-order']);
   }
 
-  japaneseOrder(id: string, type: any, providerid: string) {
-    type = 'japanese';
-    providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+  japaneseOrder() {
+this.router.navigate(['/create-order']);
   }
 
-  koreanOrder(id: string, type: any, providerid: string) {
-    type = 'korean';
-    providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+  koreanOrder() {
+    this.router.navigate(['/create-order']);
   }
 
-  lunchOrder(id: string, type: any, providerid: string) {
-    type = 'lunch';
-    providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+  lunchOrder() {
+    this.router.navigate(['/create-order']);
   }
 
-  mexicanOrder(id: string, type: any, providerid: string) {
-    type = 'mexican';
-    providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+  mexicanOrder() {
+    this.router.navigate(['/create-order']);
   }
 
-  pizzaOrder(id: string, type: any, providerid: string) {
-    type = 'pizza';
-    providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+  pizzaOrder() {
+    this.router.navigate(['/create-order']);
   }
 
-  saladOrder(id: string, type: any, providerid: string) {
-    type = 'salad';
-    providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+  saladOrder() {
+
   }
 
-  traditionalOrder(id: string, type: any, providerid: string) {
-    type = 'traditional';
-    providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+  traditionalOrder() {
+    this.router.navigate(['/create-order']);
   }
 
-  veganOrder(id: string, type: any, providerid: string) {
-    type = 'vegan';
-    providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+  veganOrder() {
+    this.router.navigate(['/create-order']);
   }
 
-  vegetarianOrder(id: string, type: any, providerid: string) {
-    type = 'vegetarian';
-    providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+  vegetarianOrder() {
+    this.router.navigate(['/create-order']);
   }
 
-  delicatesseOrder(id: string, type: any, providerid: string) {
-    type = 'delicatesse';
-    providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+  delicatesseOrder() {
+    this.router.navigate(['/create-order']);
   }
 
-  drinkOrder(id: string, type: any, providerid: string) {
-    type = 'drink';
-    providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+  drinkOrder() {
+    this.router.navigate(['/create-order']);
   }
 
-  extrasOrder(id: string, type: any, providerid: string) {
-    type = 'extra';
-    providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+  extrasOrder() {
+    this.router.navigate(['/create-order']);
   }
-  fridgeOrder(id: string, type: any, providerid: string) {
-    type = 'fridge';
-    providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+  fridgeOrder() {
+    this.router.navigate(['/create-order']);
   }
 
-  fruitOrder(id: string, type: any, providerid: string) {
-    type = 'fruit';
-    providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+  fruitOrder() {
+    this.router.navigate(['/create-order']);
   }
 
-  greengrocerOrder(id: string, type: any, providerid: string) {
-    type = 'greengrocer';
-    providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+  greengrocerOrder() {
+    this.router.navigate(['/create-order']);
   }
 
-  liquorOrder(id: string, type: any, providerid: string) {
-    type = 'liquor';
-    providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+  liquorOrder() {
+    this.router.navigate(['/create-order']);
   }
 
-  victualOrder(id: string, type: any, providerid: string) {
-    type = 'victual';
-    providerid = this.id;
-    this.router.navigate(['/create-order', id, type, providerid]);
+  victualOrder() {
+    this.router.navigate(['/create-order']);
   }
 }

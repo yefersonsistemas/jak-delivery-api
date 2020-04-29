@@ -33,9 +33,9 @@ const routes: Routes = [
     // canLoad: [UsersGuard]
   },
   {
-    path: 'create-order/:id/:type/:providerid',
+    path: 'create-order',
     loadChildren: () => import('./pages/client/create-order/create-order.module').then( m => m.CreateOrderPageModule),
-  // canLoad: [UsersGuard]
+  // canLoad: [UsersGuard] //:id/:type/:providerid
   },
   {
     path: 'product-create',
@@ -52,10 +52,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/provider/product-list/product-list.module').then( m => m.ProductListPageModule),
     // canLoad: [UsersGuard]
   },
-
-
-
-
+  {
+    path: 'pre-home',
+    loadChildren: () => import('./pages/client/pre-home/pre-home.module').then( m => m.PreHomePageModule)
+  },
+  {
+    path: 'logged-home',
+    loadChildren: () => import('./pages/client/logged-home/logged-home.module').then( m => m.LoggedHomePageModule)
+  },
 ];
 @NgModule({
   imports: [

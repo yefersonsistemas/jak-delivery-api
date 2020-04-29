@@ -19,42 +19,42 @@ export class CartshoppingService {
     return this.cartItemCount;
   }
 
-  // addProduct(product) {
-  //   let added = false;
-  //   for (let p of this.shoppingCart) {
-  //     if (p.id === product.id) {
+  addProduct(product) {
+    let added = false;
+    for (let p of this.shoppingCart) {
+      if (p.id === product.id) {
   //       p.amount += 1;
-  //       added = true;
-  //       break;
-  //     }
-  //   }
-  //   if (!added) {
-  //     product.amount = 1;
-  //     this.shoppingCart.push(product);
-  //   }
-  //   this.cartItemCount.next(this.cartItemCount.value + 1);
-  // }
+        added = true;
+        break;
+      }
+    }
+    if (!added) {
+      product.amount = 1;
+      this.shoppingCart.push(product);
+    }
+    this.cartItemCount.next(this.cartItemCount.value + 1);
+  }
 
-  // decreaseProduct(product) {
-  //   for (let [index, p] of this.shoppingCart.entries()) {
-  //     if (p.id === product.id) {
+  decreaseProduct(product) {
+    for (let [index, p] of this.shoppingCart.entries()) {
+      if (p.id === product.id) {
   //       p.amount -= 1;
-  //       if (p.amount === 0) {
-  //         this.shoppingCart.splice(index, 1);
-  //       }
-  //     }
-  //   }
-  //   this.cartItemCount.next(this.cartItemCount.value - 1);
-  // }
+        if (p.amount === 0) {
+          this.shoppingCart.splice(index, 1);
+        }
+      }
+    }
+    this.cartItemCount.next(this.cartItemCount.value - 1);
+  }
 
-  // removeProduct(product) {
-  //   for (let [index, p] of this.shoppingCart.entries()) {
-  //     if (p.id === product.id) {
-  //       this.cartItemCount.next(this.cartItemCount.value - p.amount);
-  //       this.shoppingCart.splice(index, 1);
-  //     }
-  //   }
-  // }
+  removeProduct(product) {
+    for (let [index, p] of this.shoppingCart.entries()) {
+      if (p.id === product.id) {
+        this.cartItemCount.next(this.cartItemCount.value - p.amount);
+        this.shoppingCart.splice(index, 1);
+      }
+    }
+  }
 
 
 }

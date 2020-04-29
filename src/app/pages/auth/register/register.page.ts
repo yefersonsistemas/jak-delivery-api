@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { AlertserviceService } from '../../../services/alertservice.service';
 import { NgForm } from '@angular/forms';
+import { IonSlides, NavController } from '@ionic/angular';
 import { User } from 'src/app/models/interface';
-import { NavController } from '@ionic/angular';
 import { GetmethodsService } from 'src/app/services/getmethods.service';
 import Swal from 'sweetalert2';
 
@@ -13,6 +13,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
+
+  @ViewChild('slidePrincipal', { static: true }) slides: IonSlides;
 
   emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
 
@@ -41,6 +43,9 @@ export class RegisterPage implements OnInit {
               private getmethods: GetmethodsService) { }
 
   ngOnInit() {
+
+    // Codigo para bloquear el slide
+    this.slides.lockSwipes( true );
     // codigo para traer los estados, ciudades, municipios y parroquias
     this.getmethods.getInfoAddress().subscribe((resp: any ) => {
       this.address = resp;
@@ -83,6 +88,18 @@ export class RegisterPage implements OnInit {
       }
     });
 
+  }
+
+  adelante() {
+    this.slides.lockSwipes(false);
+    this.slides.slideTo(1);
+    this.slides.lockSwipes(true);
+  }
+
+  atras() {
+    this.slides.lockSwipes(false);
+    this.slides.slideTo(0);
+    this.slides.lockSwipes(true);
   }
 
 }

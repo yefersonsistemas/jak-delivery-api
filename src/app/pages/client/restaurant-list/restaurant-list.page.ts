@@ -8,21 +8,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./restaurant-list.page.scss'],
 })
 export class RestaurantListPage implements OnInit {
-
   providers: any[] = [];
 
   textSearch = '';
 
-  constructor(private getmethods: GetmethodsService, private router: Router) { }
+  constructor(private getmethods: GetmethodsService, private router: Router) {}
 
   ngOnInit() {
-    this.getmethods.getProviders().subscribe(( resp: any ) => {
-      // console.log(resp);
+    this.getmethods.getProviders().subscribe((resp: any) => {
+      console.log(resp);
       this.providers = resp;
     });
   }
 
-  search( event ) {
+  search(event) {
     this.textSearch = event.detail.value;
     // console.log(this.textSearch);
   }
@@ -30,5 +29,4 @@ export class RestaurantListPage implements OnInit {
   getFood(id: any) {
     this.router.navigate(['/restaurant-food', id]);
   }
-
 }

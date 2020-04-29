@@ -2,27 +2,52 @@
     position: absolute;
 }
 
-$rib_color: #ED145B;
 $pg_thick: 2px;
 .ribbon1 {
-    background-color: $rib_color;
+    background: #ED145B;
     // border-left: 1px solid darken($rib_color, 10%);
     // border-right: 1px solid darken($rib_color, 10%);
     position: absolute;
     top: -1px;
     bottom: -($pg_thick+1);
     right: 0em;
-    width: 1em;
+    width: 1.5em;
     z-index: 1;
 }
 
+// .ribbon1:before,
+// .ribbon1:after {
+//     content: '';
+//     position: absolute;
+//     right: 100%;
+//     /* I use this instead of right: 0 to avoid 1px rounding errors */
+//     margin-right: -9px;
+//     /* I use this because I am using left: 100% */
+//     width: 9px;
+//     height: 9px;
+//     border-left: 9px solid #ED145B;
+//     z-index: -1;
+// }
+
+// .ribbon1:before {
+//     top: -9px;
+//     border-bottom: 9px solid #ED145B;
+//     border-bottom-left-radius: 18px;
+// }
+
+// .ribbon1:after {
+//     bottom: -9px;
+//     border-top: 9px solid #ED145B;
+//     border-top-left-radius: 18px;
+// }
+
 .ribbon2 {
     border-radius: 50px 0 0 50px;
-    width: 200px;
+    width: 75px;
     height: 60px;
     background: #ED145B;
-    bottom: 40px;
-    right: 17px;
+    bottom: 50px;
+    right: 23px;
     z-index: 1;
 }
 
@@ -52,6 +77,15 @@ $pg_thick: 2px;
     border-top-right-radius: 18px;
 }
 
+.ion-margin-top {
+    margin-top: 50px;
+}
+
+.ion-margin-sides {
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
 .no-shadow {
     box-shadow: none !important;
 }
@@ -60,25 +94,13 @@ $pg_thick: 2px;
     border-radius: 50%;
     background-color: white;
     top: 0;
-    width: 21px;
-    height: 21px;
+    width: 40px;
+    height: 40px;
     box-sizing: border-box;
     padding: 5px;
+    margin-top: 5px;
 }
 
-ion-img {
-    top: 30px;
-    position: absolute;
-    width: 100px;
+.ion-margin-bottom {
+    margin-bottom: 10px;
 }
-
-ion-button {
-    margin-top: 8px;
-}
-
-.mainSlide,
-.mainSlide ion-slide {
-    width: 100%;
-    height: 100%;
-}
-

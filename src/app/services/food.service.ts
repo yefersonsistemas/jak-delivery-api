@@ -37,4 +37,8 @@ export class FoodService {
     return this.http.post( Url + 'auth/foodD/drink', ids);
   }
 
+  getTypePayment() {
+    return this.http.get( Url + 'auth/providers/type_payment');
+  }
+
 }

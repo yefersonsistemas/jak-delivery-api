@@ -1,12 +1,25 @@
-ion-card-title{
+ion-card-title {
     // color: #fff;
     text-align: center;
 }
 
-// ion-card-subtitle{
-//      color: #fff;
-// }
-
-ion-icon{
-    margin-left: 15px;
+// i    on-card-subtitle{
+//            color: #fff;/i {rgin-left: 15px;}
+ion-card {
+    border-radius: 0 0 0 50px;
+    width: 100%;
+    margin-top: -25px;
+    border: 2px solid #fff;
 }
+
+.infoCard{
+    --background: url("/assets/comida.jpg") no-repeat;
+    margin-top: 0px;
+    border-radius: 25px;
+    width: 100%;
+    height: 150px;
+    border: 2px solid #ED145B;
+    margin-left: -1px;
+    margin-bottom: 25px;
+}
+
