@@ -4,9 +4,15 @@
       <ion-menu-button menu="primerMenu"></ion-menu-button>
     </ion-buttons>
     <ion-buttons slot="primary">
+      <ion-button class="shoppingcart" (click)="goCreateOrder()">
+        <ion-badge *ngIf="shoppingCart.length > 0">{{ shoppingCart.length }}</ion-badge>
+        <ion-icon name="cart" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
       <ion-back-button
         defaultHref="/restaurant-list"
-        text="Inicio"
+        text="Regresar"
       ></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
@@ -17,7 +23,7 @@
   ></ion-searchbar>
 </ion-header>
 
-<ion-content>
+<ion-content  [fullscreen]="true">
   <ion-grid fixed>
     <ion-row>
         <ion-col size="12">
@@ -102,8 +108,8 @@
                   {{ burguer.name }}
                 </ion-card-title>
               </ion-col>
-              <ion-col size="6">
-                <ion-card-subtitle>
+              <ion-col size="12" >
+                <ion-card-subtitle class="ion-float-right">
                   BS.{{ burguer.price_bs }}/USD.{{ burguer.price_us }}
                 </ion-card-subtitle>
               </ion-col>

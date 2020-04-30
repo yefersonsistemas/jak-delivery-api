@@ -4,17 +4,17 @@ import { FormsModule } from "@angular/forms";
 
 import { IonicModule } from "@ionic/angular";
 
-import { CreateOrderPageRoutingModule } from "./create-order-routing.module";
+import { AddShoppingcartPageRoutingModule } from "./add-shoppingcart-routing.module";
 
-import { CreateOrderPage } from "./create-order.page";
+import { AddShoppingcartPage } from "./add-shoppingcart.page";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CreateOrderPageRoutingModule,
+    AddShoppingcartPageRoutingModule,
   ],
-  declarations: [CreateOrderPage],
+  declarations: [AddShoppingcartPage],
 })
-export class CreateOrderPageModule {}
+export class AddShoppingcartPageModule {}

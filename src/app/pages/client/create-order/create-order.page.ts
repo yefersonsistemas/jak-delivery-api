@@ -18,8 +18,13 @@ export class CreateOrderPage implements OnInit {
   extras: any = [];
   drinks: any = [];
   typepayment: any = [];
+  shoppingCart = [];
 
-  constructor( private acroute: ActivatedRoute, private food: FoodService, private shopping: CartshoppingService) { }
+  constructor(
+    private acroute: ActivatedRoute,
+    private food: FoodService,
+    private shopping: CartshoppingService
+  ) {}
 
   ngOnInit() {
     // // obteniendo los valores que se envian en la ruta
@@ -46,11 +51,12 @@ export class CreateOrderPage implements OnInit {
       this.typepayment = resp;
       console.log(this.typepayment);
     });
+
+    this.shoppingCart = this.shopping.getCart();
   }
 
-  onClick(id: any) {
-    console.log(id);
-  }
-
+  // onClick(id: any) {
+  //   console.log(id);
+  // }
 
 }

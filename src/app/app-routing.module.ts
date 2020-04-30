@@ -60,6 +60,15 @@ const routes: Routes = [
     path: 'logged-home',
     loadChildren: () => import('./pages/client/logged-home/logged-home.module').then( m => m.LoggedHomePageModule)
   },
+  {
+    path: 'add-shoppingcart',
+    loadChildren: () => import('./pages/client/add-shoppingcart/add-shoppingcart.module').then( m => m.AddShoppingcartPageModule)
+  },
+  {
+    path: 'add-shoppingcart/:id/:type/:providerid',
+    loadChildren: () => import('./pages/client/add-shoppingcart/add-shoppingcart.module').then( m => m.AddShoppingcartPageModule)
+  },
+
 ];
 @NgModule({
   imports: [

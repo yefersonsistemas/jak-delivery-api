@@ -1,4 +1,4 @@
-<ion-header class="ion-no-border" [translucent]="true"> 
+<ion-header class="ion-no-border" [translucent]="true">
   <ion-toolbar>
 
     <ion-buttons slot="start">
@@ -6,7 +6,10 @@
     </ion-buttons>
 
     <ion-buttons slot="primary">
-      <ion-back-button defaultHref="/restaurant-food" text="Regresar"></ion-back-button> 
+      <ion-back-button
+        defaultHref="/restaurant-food"
+        text="Regresar"
+      ></ion-back-button>
     </ion-buttons>
 
   </ion-toolbar>
@@ -17,7 +20,7 @@
   <ion-grid fixed>
     <ion-row>
       <ion-col size="12">
-        <p>Tu Pedido</p>
+        <ion-label>Tu Pedido</ion-label>
       </ion-col>
       <ion-col size="12">
         <ion-list>
@@ -26,9 +29,9 @@
             <ion-label>Producto</ion-label>
           </ion-list-header>
 
-          <ion-item>
-            <ion-label>Hamburguesa Sencilla</ion-label>
-            <ion-label>Bs. 100000 / $ 50.00</ion-label>
+          <ion-item *ngFor="let shopping of shoppingCart">
+            <ion-label>{{ shopping.name }}</ion-label>
+            <ion-label>{{ shopping.price_bs }}</ion-label>
           </ion-item>
 
           <ion-list-header>
@@ -43,7 +46,7 @@
           <ion-item>
             <ion-label position="floating">Tiempo de Entrega</ion-label>
             <ion-icon slot="start" name="hourglass-outline" size="large" class="icon-entrega"></ion-icon>
-            <ion-input type="text"></ion-input>
+            <ion-input type="text" disabled></ion-input>
           </ion-item>
           <ion-item>
             <ion-label position="floating">Numero Telefonico</ion-label>
@@ -80,7 +83,6 @@
             <ion-label>TOTAL</ion-label>
             <ion-label>Bs. 105000 / $ 51.00</ion-label>
           </ion-item>
-
         </ion-list>
       </ion-col>
       <ion-col size="12">
